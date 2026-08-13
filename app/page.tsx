@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ProjectCard } from "../components/ProjectCard";
 import { SectionIntro } from "../components/SectionIntro";
 import { SiteFooter } from "../components/SiteFooter";
@@ -59,8 +58,8 @@ export default function Home() {
               I design learner-centered digital learning experiences that combine psychology, instructional design, and creative technology to make complex ideas easier to understand, apply, and engage with.
             </p>
             <div className="button-row">
-              <Link className="button button-primary" href="#projects">View Projects <span aria-hidden="true">↓</span></Link>
-              <Link className="button button-secondary" href="#about">About Me <span aria-hidden="true">↗</span></Link>
+              <a className="button button-primary" href="#projects">View Projects <span aria-hidden="true">↓</span></a>
+              <a className="button button-secondary" href="#about">About Me <span aria-hidden="true">↗</span></a>
             </div>
           </div>
           <div className="hero-visual" aria-label="Reserved space for a future portrait or illustration">
@@ -103,7 +102,7 @@ export default function Home() {
             <div className="project-grid">
               {projects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index} />)}
             </div>
-            <div className="section-action"><Link className="text-link" href="/projects">View all case studies <span aria-hidden="true">→</span></Link></div>
+            <div className="section-action"><a className="text-link" href="/projects">View all case studies <span aria-hidden="true">→</span></a></div>
           </div>
         </section>
 

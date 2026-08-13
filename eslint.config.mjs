@@ -35,6 +35,11 @@ const eslintConfig = defineConfig([
         version: "detect",
       },
     },
+    rules: {
+      // Full-document internal navigation remains compatible with both Next.js on Vercel
+      // and the Sites runtime without adding a client-side router dependency.
+      "@next/next/no-html-link-for-pages": "off",
+    },
   },
 ]);
 

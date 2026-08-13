@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { SiteFooter } from "../../../components/SiteFooter";
 import { SiteHeader } from "../../../components/SiteHeader";
 import { getProject, getVisibleProjects } from "../../../content/projects";
@@ -27,7 +26,7 @@ export default async function ProjectPage({ params }: PageProps) {
     return (
       <>
         <SiteHeader />
-        <main className="shell not-found"><p className="eyebrow">Project not found</p><h1>This case study has moved.</h1><Link className="button button-primary" href="/projects">Back to projects</Link></main>
+        <main className="shell not-found"><p className="eyebrow">Project not found</p><h1>This case study has moved.</h1><a className="button button-primary" href="/projects">Back to projects</a></main>
         <SiteFooter />
       </>
     );
@@ -41,7 +40,7 @@ export default async function ProjectPage({ params }: PageProps) {
       <SiteHeader />
       <main id="main" className={`case-study accent-${project.accent}`}>
         <section className="case-hero shell">
-          <Link className="breadcrumb" href="/projects">← All projects</Link>
+          <a className="breadcrumb" href="/projects">← All projects</a>
           <div className="case-heading">
             <div>
               <p className="eyebrow">Case study · {String(projectIndex).padStart(2, "0")}</p>
@@ -149,7 +148,7 @@ export default async function ProjectPage({ params }: PageProps) {
 
         <nav className="next-project shell" aria-label="More projects">
           <span>Keep exploring</span>
-          <Link href="/projects">See all projects <span aria-hidden="true">→</span></Link>
+          <a href="/projects">See all projects <span aria-hidden="true">→</span></a>
         </nav>
       </main>
       <SiteFooter />

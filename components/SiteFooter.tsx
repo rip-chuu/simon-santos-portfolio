@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 export function SiteFooter() {
   return (
     <footer className="site-footer">
@@ -9,8 +7,8 @@ export function SiteFooter() {
           <p className="footer-callout">Have a learning challenge?</p>
         </div>
         <div className="footer-links">
-          <Link href="/projects">Explore projects <span aria-hidden="true">↗</span></Link>
-          <Link href="/#about">More about Simon <span aria-hidden="true">↗</span></Link>
+          <a href="/projects">Explore projects <span aria-hidden="true">↗</span></a>
+          <a href="/#about">More about Simon <span aria-hidden="true">↗</span></a>
         </div>
       </div>
       <div className="shell footer-bottom">

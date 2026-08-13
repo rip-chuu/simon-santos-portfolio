@@ -1,10 +1,9 @@
-import Link from "next/link";
 import type { Project } from "../content/projects";
 
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <article className={`project-card accent-${project.accent}`}>
-      <Link href={`/projects/${project.slug}`} aria-label={`Read the ${project.title} case study`}>
+      <a href={`/projects/${project.slug}`} aria-label={`Read the ${project.title} case study`}>
         <div className="card-topline">
           <span className="project-number">0{index + 1}</span>
           <span className="project-type">{project.type}</span>
@@ -20,7 +19,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
           {project.focus.slice(0, 3).map((item) => <span key={item}>{item}</span>)}
         </div>
         <span className="card-link">View project <span aria-hidden="true">↗</span></span>
-      </Link>
+      </a>
     </article>
   );
 }
