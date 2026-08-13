@@ -12,17 +12,40 @@ export type Project = {
   title: string;
   type: string;
   platform?: string;
+  primaryRole?: string;
+  status?: string;
   summary: string;
+  overview?: string[];
   focus: string[];
   challenge: string;
+  challengeDetails?: string[];
+  challengeConsiderations?: string[];
   role: string;
+  facultyInputs?: string[];
+  responsibilities?: string[];
+  roleBoundary?: string;
   sourceMaterials: string[];
+  representativeInput?: string;
+  beforeAfter?: {
+    before: string;
+    beforeExample: string;
+    after: string;
+    afterFeatures: string[];
+  };
   process: string[];
   decisions: { title: string; detail: string }[];
   finalOutput: string;
+  finalOutputs?: string[];
   metrics: Metric[];
+  impactNote?: string;
   reflection: string;
+  reflectionDetails?: string[];
   tools: string[];
+  mediaAssets?: {
+    filename: string;
+    description: string;
+    sections: string[];
+  }[];
   externalUrl?: string;
   accent: "coral" | "blue" | "lime" | "yellow";
 };
@@ -34,60 +57,206 @@ export const projects: Project[] = [
     visible: true,
     featured: true,
     title: "Understanding the Self",
-    type: "Asynchronous Course Design",
+    type: "Asynchronous University Course",
     platform: "OpenLearning",
+    primaryRole: "Instructional Design / Course Content Development",
+    status: "Complete",
     summary:
-      "A reflective online course designed to turn abstract theories of identity into personal, social, and practical learning moments.",
+      "Transformed faculty-provided teaching plans, module structures, and academic source materials into a learner-ready asynchronous course with structured lessons, assessments, interactive elements, and visual learning support.",
+    overview: [
+      "Understanding the Self was a university-level general education course delivered asynchronously through OpenLearning.",
+      "The course covered philosophical, psychological, sociological, anthropological, and developmental perspectives on identity and the self.",
+      "Faculty provided the overall teaching plan, module structure, intended learning outcomes, and much of the raw academic content. My role was to turn those materials into a coherent digital learning experience by revising and restructuring the content, designing learner-facing pages, selecting appropriate interactions, creating assessments and activities, and developing visual learning supports.",
+      "I contributed to all 14 lessons in the course.",
+    ],
     focus: [
-      "Course architecture",
-      "Learner interaction",
-      "Assessments",
-      "Visual learning design",
+      "Content transformation",
+      "Asynchronous lesson design",
+      "Assessments and interaction",
+      "Visual learning support",
     ],
     challenge:
-      "Create an asynchronous experience that keeps concept-heavy material personal and participatory without relying on live facilitation.",
-    role:
-      "Course architect, instructional designer, activity designer, and visual learning designer.",
-    sourceMaterials: [
-      "Course syllabus and learning outcomes",
-      "Subject-matter references",
-      "Existing assessment requirements",
-      "OpenLearning platform constraints",
+      "The content and sequence were already substantially defined by the teaching plan. The challenge was converting dense, academically structured material into an asynchronous experience that learners could navigate independently.",
+    challengeDetails: [
+      "This was not a matter of creating the subject from scratch. It required making careful decisions about how the established curriculum would become a usable learner-facing experience.",
+      "Because learners would not have a lecturer continuously guiding them through the material, each lesson page needed enough structure, context, and interaction to support self-directed learning.",
     ],
+    challengeConsiderations: [
+      "How much information to present at once",
+      "Where concepts needed additional explanation",
+      "How to break long sections into manageable chunks",
+      "Where learners should stop and interact",
+      "Which concepts benefited from visual representation",
+      "How assessment could reinforce understanding rather than only test recall",
+    ],
+    role:
+      "I was responsible for the learner-facing instructional design and OpenLearning implementation of the course.",
+    facultyInputs: [
+      "Teaching plans",
+      "Intended learning outcomes",
+      "Prescribed module and lesson sequence",
+      "Raw lesson content",
+      "Suggested activities and assessments",
+      "Academic references and source materials",
+    ],
+    responsibilities: [
+      "Revising and restructuring raw content",
+      "Designing lesson flow, chunking, and pacing",
+      "Developing visual learning aids",
+      "Selecting and configuring OpenLearning widgets",
+      "Creating formative and summative assessments",
+      "Designing reflection and application activities",
+      "Incorporating supplementary media",
+      "Building the learner-facing OpenLearning pages",
+    ],
+    roleBoundary:
+      "I did not own the original academic curriculum or final publishing authority. My substantial ownership was in the learner-experience layer: content transformation, interaction, assessment, visuals, pacing, and LMS execution.",
+    sourceMaterials: [
+      "Official teaching plan",
+      "Module and lesson outline",
+      "Intended learning outcomes",
+      "Faculty-provided raw text",
+      "Academic source materials and textbook references",
+      "Suggested teaching-learning activities",
+      "Suggested assessment strategies",
+    ],
+    representativeInput:
+      "A teaching plan might specify a topic such as philosophical perspectives of the self, identify the philosophers to be covered, provide raw explanatory material, and suggest an assessment. The instructional work began from there.",
+    beforeAfter: {
+      before:
+        "Dense faculty-provided academic text structured primarily around subject content and course requirements.",
+      beforeExample:
+        "Raw material explaining Socrates, Plato, and Aristotle through relatively long conceptual descriptions.",
+      after:
+        "A learner-facing asynchronous lesson that preserved academic intent while creating a clearer path through the material.",
+      afterFeatures: [
+        "Clear lesson introduction and learning objectives",
+        "Content divided into sections by philosopher",
+        "Simplified but academically faithful explanations",
+        "Visual learning support and supplementary media",
+        "Formative knowledge checks",
+        "Reflection and application prompts",
+      ],
+    },
     process: [
-      "Mapped outcomes to a clear module sequence",
-      "Chunked theories into learner-sized concepts",
-      "Designed reflection and social interaction prompts",
-      "Aligned assessments to authentic application",
-      "Built and reviewed the course in OpenLearning",
+      "Reviewed the teaching plan and intended learning outcomes to determine the required lesson scope.",
+      "Reviewed faculty-provided content and sources to identify essential concepts and areas needing clarification or restructuring.",
+      "Reorganized the content into a learner-friendly sequence appropriate for asynchronous delivery.",
+      "Used ChatGPT selectively to support content structuring, drafting, activity ideation, and assessment development.",
+      "Applied instructional judgment to revise AI-assisted and source-derived material for accuracy, clarity, pacing, and alignment.",
+      "Added visual aids, interactions, checks, reflections, and activities where they supported a learning objective.",
+      "Built and reviewed the final learner-facing pages in OpenLearning.",
     ],
     decisions: [
       {
-        title: "Make theory personal",
+        title: "Break dense content into conceptual sections",
         detail:
-          "Each concept is paired with a question, scenario, or reflection that connects it to the learner's own experience.",
+          "Long explanations worked as academic source material but were less effective for independent online learning. Shorter sections made concepts easier to process and created clearer points of progression.",
       },
       {
-        title: "Design for visible thinking",
+        title: "Use interaction selectively",
         detail:
-          "Discussion and short-form activities give learners a reason to articulate, compare, and revise their thinking.",
+          "Widgets were used for a learning purpose—progressive reveal, recall, reflection, discussion, or application—not as decoration.",
       },
       {
-        title: "Use assessment as learning",
+        title: "Connect concepts to lived experience",
         detail:
-          "Checks and outputs are positioned as opportunities to apply ideas—not as interruptions at the end of a lesson.",
+          "Reflection and application prompts helped learners connect abstract philosophical and psychological ideas to their own identities, experiences, and decisions.",
+      },
+      {
+        title: "Use visuals for conceptual understanding",
+        detail:
+          "Diagrams, infographics, and visual comparisons reduced content density and clarified relationships that would have required additional paragraphs to explain.",
       },
     ],
     finalOutput:
-      "A complete OpenLearning course experience with sequenced modules, interactive prompts, assessments, and a coherent visual system. Screenshots and a guided walkthrough will be added here.",
-    metrics: [
-      { value: "—", label: "Learners reached", note: "Metric to be added" },
-      { value: "—", label: "Completion rate", note: "Metric to be added" },
-      { value: "—", label: "Learner feedback", note: "Evidence to be added" },
+      "A complete learner-facing OpenLearning experience spanning all 14 Understanding the Self lessons.",
+    finalOutputs: [
+      "14 asynchronous lessons",
+      "Learner-facing OpenLearning pages",
+      "Learning objectives and revised explanatory content",
+      "Formative assessments",
+      "Reflection and discussion activities",
+      "Submission-based activities",
+      "Interactive OpenLearning elements",
+      "Supplementary media",
+      "Visual learning aids and diagrams",
     ],
+    metrics: [
+      { value: "14", label: "Lessons completed", note: "Understanding the Self" },
+      { value: "35", label: "Lessons completed", note: "Across two university courses" },
+      { value: "40+", label: "Assessments and activities", note: "Across both courses" },
+      { value: "50+", label: "Visual aids and diagrams", note: "Approximate total across both courses" },
+      { value: "8", label: "Working days", note: "Two courses produced" },
+    ],
+    impactNote:
+      "These are verified production results, not learner-performance claims. Completion rates, assessment-performance data, and satisfaction scores were not available to me at the time of development.",
     reflection:
-      "This project reinforced the value of designing for personal relevance. The next case-study update will document learner evidence and specific design iterations.",
-    tools: ["OpenLearning", "Canva", "PowerPoint", "Google Workspace"],
+      "This project taught me that converting academic material into e-learning is not simply a matter of shortening text or adding interactions.",
+    reflectionDetails: [
+      "The most important decisions involved determining what learners needed at each point: when they needed more explanation, when they needed an example, when they should interact with the material, and when they should apply what they had learned.",
+      "It also strengthened my ability to balance instructional ambition with production constraints. The delivery timeline required me to prioritize the elements with the greatest learning value.",
+      "If I were to iterate on the course, I would want stronger access to learner analytics and facilitator feedback so future revisions could be informed by actual learner behavior and performance.",
+    ],
+    tools: [
+      "OpenLearning",
+      "ChatGPT",
+      "Canva",
+      "Google Workspace",
+      "HTML embeds / custom interactive elements",
+    ],
+    mediaAssets: [
+      {
+        filename: "01_teaching-plan.png",
+        description: "Original teaching plan, outcomes, requirements, suggested activities, and assessment strategy.",
+        sections: ["Inputs", "Learning Challenge"],
+      },
+      {
+        filename: "02_raw-content.png",
+        description: "Representative faculty-provided academic content before instructional restructuring.",
+        sections: ["Before / After"],
+      },
+      {
+        filename: "03_philosophy-lesson-opening.png",
+        description: "Lesson title, introduction, and learning objectives.",
+        sections: ["Final Output"],
+      },
+      {
+        filename: "04_philosophy-content.png",
+        description: "Learner-facing Socrates, Plato, and Aristotle explanation.",
+        sections: ["Before / After", "Learning Decisions"],
+      },
+      {
+        filename: "05_visual-learning-aid.png",
+        description: "Diagram or infographic used to clarify course content.",
+        sections: ["Learning Decisions", "Final Output"],
+      },
+      {
+        filename: "06_knowledge-check.png",
+        description: "Formative multiple-choice or interactive assessment.",
+        sections: ["Final Output"],
+      },
+      {
+        filename: "07_reflection-activity.png",
+        description: "Learner reflection, discussion, or application task.",
+        sections: ["Final Output"],
+      },
+      {
+        filename: "08_interactive-widget.png",
+        description: "OpenLearning interactive element.",
+        sections: ["Design Process", "Final Output"],
+      },
+      {
+        filename: "09_supplementary-media.png",
+        description: "Embedded video or supplementary learning resource.",
+        sections: ["Final Output"],
+      },
+      {
+        filename: "10_course-structure.png",
+        description: "Overall module and lesson organization.",
+        sections: ["Project Overview"],
+      },
+    ],
     accent: "coral",
   },
   {
