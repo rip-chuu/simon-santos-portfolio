@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import type { MouseEvent } from "react";
 import type { Project } from "../content/projects";
 
 type ProjectCardProps = {
@@ -31,10 +30,6 @@ export function ProjectCard({ project, index, expandable = false }: ProjectCardP
     document.body.classList.remove("modal-open");
   }
 
-  function handleBackdropClick(event: MouseEvent<HTMLDialogElement>) {
-    if (event.target === event.currentTarget) closeSummary();
-  }
-
   return (
     <article className={`project-card accent-${project.accent}`}>
       {expandable ? (
@@ -59,7 +54,6 @@ export function ProjectCard({ project, index, expandable = false }: ProjectCardP
           ref={dialogRef}
           aria-labelledby={titleId}
           onClose={handleDialogClose}
-          onClick={handleBackdropClick}
         >
           <div className="project-dialog-panel">
             <div className="dialog-art" aria-hidden="true">

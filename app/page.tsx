@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ProjectCard } from "../components/ProjectCard";
 import { SectionIntro } from "../components/SectionIntro";
 import { SiteFooter } from "../components/SiteFooter";
@@ -62,17 +63,23 @@ export default function Home() {
               <a className="button button-secondary" href="#about">About Me <span aria-hidden="true">↗</span></a>
             </div>
           </div>
-          <div className="hero-visual" aria-label="Reserved space for a future portrait or illustration">
-            <div className="visual-label">Portrait slot / ready when you are</div>
+          <div className="hero-visual">
+            <div className="visual-label">Simon Santos / Instructional Designer</div>
             <div className="visual-stage">
               <span className="burst-word">HUMAN</span>
               <span className="pixel-cross cross-one" aria-hidden="true">+</span>
               <span className="pixel-cross cross-two" aria-hidden="true">+</span>
-              <div className="portrait-placeholder">
-                <span>SS</span>
-                <small>PHOTO /<br />ILLUSTRATION</small>
+              <div className="portrait-frame">
+                <Image
+                  className="portrait-image"
+                  src="/images/profile/simon-santos-portrait.jpg"
+                  alt="Portrait of Simon Santos"
+                  fill
+                  priority
+                  sizes="(max-width: 920px) 80vw, 34vw"
+                />
               </div>
-              <span className="arrow-note" aria-hidden="true">↖ add personality here</span>
+              <span className="arrow-note" aria-hidden="true">↖ learning, made human</span>
             </div>
           </div>
           <div className="hero-ticker" aria-hidden="true">
