@@ -100,7 +100,7 @@ export default function Home() {
           <div className="shell">
             <SectionIntro index="02" label="Featured projects" title="Learning experiences built for real humans." copy="Selected work across higher education, organizational learning, and performance support." />
             <div className="project-grid">
-              {projects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index} />)}
+              {projects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index} expandable />)}
             </div>
             <div className="section-action"><a className="text-link" href="/projects">View all case studies <span aria-hidden="true">→</span></a></div>
           </div>
