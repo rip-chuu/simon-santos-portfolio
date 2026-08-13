@@ -56,19 +56,18 @@ export default function Home() {
             <p className="eyebrow"><span className="status-dot" /> Simon Santos · Instructional Designer / LXD</p>
             <h1>Making learning <em>human.</em></h1>
             <p className="hero-lede">
-              I design learner-centered digital learning experiences that combine psychology, instructional design, and creative technology to make complex ideas easier to understand, apply, and engage with.
+              I design learner-centered experiences that transform complex ideas into meaningful, engaging learning.
             </p>
+            <p className="hero-disciplines">Psychology <span>×</span> Instructional Design <span>×</span> Creative Technology</p>
             <div className="button-row">
-              <a className="button button-primary" href="#projects">View Projects <span aria-hidden="true">↓</span></a>
-              <a className="button button-secondary" href="#about">About Me <span aria-hidden="true">↗</span></a>
+              <a className="button button-primary hero-primary-cta" href="#projects">View Projects <span aria-hidden="true">→</span></a>
+              <a className="button button-secondary" href="#about">About Simon <span aria-hidden="true">→</span></a>
             </div>
           </div>
           <div className="hero-visual">
-            <div className="visual-label">Simon Santos / Instructional Designer</div>
+            <div className="visual-label">Learning, made human.</div>
             <div className="visual-stage">
-              <span className="burst-word">HUMAN</span>
               <span className="pixel-cross cross-one" aria-hidden="true">+</span>
-              <span className="pixel-cross cross-two" aria-hidden="true">+</span>
               <div className="portrait-frame">
                 <Image
                   className="portrait-image"
@@ -78,13 +77,19 @@ export default function Home() {
                   priority
                   sizes="(max-width: 920px) 80vw, 34vw"
                 />
+                <div className="portrait-intro">
+                  <strong>Simon Santos</strong>
+                  <span>Instructional Designer / LXD</span>
+                </div>
               </div>
-              <span className="arrow-note" aria-hidden="true">↖ learning, made human</span>
             </div>
           </div>
-          <div className="hero-ticker" aria-hidden="true">
-            <span>LEARNER-CENTERED</span><i>✦</i><span>PRACTICAL</span><i>✦</i><span>INTERACTIVE</span><i>✦</i><span>RELATABLE</span>
-          </div>
+          <ul className="hero-proof" aria-label="Selected portfolio production highlights">
+            <li><strong>35+</strong><span>Lessons created</span></li>
+            <li><strong>2</strong><span>University courses</span></li>
+            <li><strong>40+</strong><span>Learning activities</span></li>
+            <li><strong>OL</strong><span>OpenLearning development</span></li>
+          </ul>
         </section>
 
         <section className="philosophy section-pad">
