@@ -41,7 +41,15 @@ const capabilities = [
   },
 ];
 
-const tools = ["OpenLearning", "Canva", "PowerPoint", "ChatGPT", "DaVinci Resolve", "Audacity", "Google Workspace"];
+const tools = [
+  { name: "OpenLearning", descriptor: "LMS Development", logo: "/images/toolkit/openlearning-logo.svg", logoShape: "wide" },
+  { name: "Canva", descriptor: "Visual Design", logo: "/images/toolkit/canva-seeklogo.svg" },
+  { name: "PowerPoint", descriptor: "Learning Decks", logo: "/images/toolkit/microsoft-powerpoint-icon.svg" },
+  { name: "ChatGPT", descriptor: "AI-Assisted Design", logo: "/images/toolkit/chatgpt-icon.svg" },
+  { name: "DaVinci Resolve", descriptor: "Video Editing", logo: "/images/toolkit/DaVinci_Resolve_17_logo.svg" },
+  { name: "Audacity", descriptor: "Audio Editing", logo: "/images/toolkit/audacity-icon.svg" },
+  { name: "Google Workspace", descriptor: "Collaboration", logo: "/images/toolkit/google-workspace-logo.svg", logoShape: "wide" },
+];
 
 export default function Home() {
   const projects = getFeaturedProjects();
@@ -136,7 +144,17 @@ export default function Home() {
         <section className="tools-section">
           <div className="shell tools-layout">
             <div><p className="eyebrow">Tools in service of the idea</p><h2>The toolkit changes.<br />The thinking stays.</h2></div>
-            <ul className="tool-cloud">{tools.map((tool) => <li key={tool}>{tool}</li>)}</ul>
+            <ul className="tool-cloud" aria-label="Design and learning technology toolkit">
+              {tools.map((tool) => (
+                <li key={tool.name}>
+                  <span className={`tool-logo${tool.logoShape === "wide" ? " tool-logo-wide" : ""}`}>
+                    <Image src={tool.logo} alt="" width={88} height={88} />
+                  </span>
+                  <strong className="tool-name">{tool.name}</strong>
+                  <span className="tool-descriptor">{tool.descriptor}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
