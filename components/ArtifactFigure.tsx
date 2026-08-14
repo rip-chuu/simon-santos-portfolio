@@ -6,7 +6,13 @@ type ArtifactFigureProps = {
   alt: string;
   title: string;
   caption: string;
-  classification: "Context evidence" | "Design evidence" | "Learning experience evidence";
+  classification:
+    | "Context evidence"
+    | "Design evidence"
+    | "Learning experience evidence"
+    | "Learning Experience Design"
+    | "Performance Support / Guided Practice";
+  imageRatio?: string;
   className?: string;
 };
 
@@ -16,12 +22,13 @@ export function ArtifactFigure({
   title,
   caption,
   classification,
+  imageRatio,
   className = "",
 }: ArtifactFigureProps) {
   return (
     <figure className={`artifact-figure ${className}`.trim()}>
       <div className="artifact-preview">
-        <span className="artifact-image"><Image src={previewSrc} alt={alt} fill sizes="(max-width: 920px) 100vw, 760px" /></span>
+        <span className="artifact-image" style={imageRatio ? { aspectRatio: imageRatio } : undefined}><Image src={previewSrc} alt={alt} fill sizes="(max-width: 920px) 100vw, 760px" /></span>
       </div>
       <figcaption>
         <span>{classification}</span>

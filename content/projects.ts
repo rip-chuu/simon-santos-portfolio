@@ -14,6 +14,12 @@ export type Project = {
   platform?: string;
   primaryRole?: string;
   status?: string;
+  cardSubtitle?: string;
+  domain?: "Higher Education" | "Organizational Learning & Performance";
+  capability?: string;
+  context?: string;
+  targetUsers?: string;
+  heroImage?: string;
   summary: string;
   overview?: string[];
   focus: string[];
@@ -47,7 +53,7 @@ export type Project = {
     sections: string[];
   }[];
   externalUrl?: string;
-  accent: "coral" | "blue" | "lime" | "yellow";
+  accent: "coral" | "blue" | "lime" | "yellow" | "olive" | "forest";
 };
 
 export const projects: Project[] = [
@@ -61,6 +67,12 @@ export const projects: Project[] = [
     platform: "OpenLearning",
     primaryRole: "Instructional Design / Course Content Development",
     status: "Complete",
+    cardSubtitle: "Asynchronous Higher Education Course Development",
+    domain: "Higher Education",
+    capability: "Course Development",
+    context: "Higher Education / Online Learning",
+    targetUsers: "University students completing a self-directed general education course.",
+    heroImage: "/images/projects/understanding-the-self/hero-course-wide.png",
     summary:
       "Transformed faculty-provided teaching plans, module structures, and academic source materials into a learner-ready asynchronous course with structured lessons, assessments, interactive elements, and visual learning support.",
     overview: [
@@ -265,59 +277,81 @@ export const projects: Project[] = [
     visible: true,
     featured: true,
     title: "Mathematics in the Modern World",
-    type: "Digital Learning Design",
-    platform: "OpenLearning",
+    type: "Interactive Practice Lab",
+    platform: "HTML Embed / OpenLearning",
+    primaryRole: "Instructional Designer / Interactive Learning Developer",
+    status: "Complete prototype",
+    cardSubtitle: "Arithmetic Sequence Practice Lab",
+    domain: "Higher Education",
+    capability: "Interactive Practice",
+    context: "Higher Education / Formative Practice",
+    targetUsers: "University learners building fluency with arithmetic-sequence procedures.",
+    heroImage: "/images/projects/mathematics-in-the-modern-world/arithmetic-sequence-practice-lab.png",
     summary:
-      "A guided digital learning experience that makes technical ideas easier to enter, practice, and use in everyday contexts.",
+      "A self-initiated interactive practice lab that decomposes arithmetic sequences into four guided skills with immediate, low-stakes feedback.",
     focus: [
-      "Technical content simplification",
+      "Skill decomposition",
       "Guided practice",
-      "Interactive learning",
+      "Immediate feedback",
+      "HTML learning interaction",
     ],
     challenge:
-      "Reduce intimidation around technical content while maintaining accuracy, rigor, and enough guided practice for learners to build confidence.",
+      "A concise visual explained the arithmetic-sequence concept, but learners also needed a place to practise each procedure actively instead of only reading an example.",
+    challengeDetails: [
+      "The opportunity emerged during the wider course build rather than from a formal research study or analytics review.",
+      "The design goal was to turn one multi-step procedure into a visible sequence of manageable practice decisions.",
+    ],
     role:
-      "Instructional designer, content translator, practice designer, and course builder.",
+      "I identified the practice opportunity, decomposed the procedure into four skills, designed the feedback flow, and developed the HTML-embedded prototype.",
     sourceMaterials: [
-      "Course learning outcomes",
-      "Technical references and worked examples",
-      "Existing exercises",
-      "Platform requirements",
+      "Arithmetic Sequences at a Glance learning visual",
+      "Course content and worked examples",
+      "OpenLearning embed constraints",
     ],
     process: [
-      "Identified prerequisite knowledge and likely friction points",
-      "Reframed explanations around concrete examples",
-      "Sequenced worked examples before independent practice",
-      "Added frequent, low-stakes knowledge checks",
-      "Reviewed language and visual density for clarity",
+      "Identified the procedural actions hidden inside the worked example",
+      "Separated the task into four progressive skills",
+      "Designed guided and self-selected practice modes",
+      "Placed feedback directly beside each attempt",
+      "Built the interaction as an embeddable HTML prototype",
     ],
     decisions: [
       {
-        title: "Lower the entry barrier",
+        title: "Decompose the procedure",
         detail:
-          "Lessons open with relatable contexts before moving toward symbols, procedures, and formal language.",
+          "Checking differences, identifying the first term, writing the explicit rule, and finding a specified term became four distinct practice targets.",
       },
       {
-        title: "Model, guide, release",
+        title: "Offer guided and self-selected paths",
         detail:
-          "Practice moves from demonstrated reasoning to scaffolded attempts and, finally, independent application.",
+          "Learners can follow the intended progression or revisit the particular skill they need to strengthen.",
       },
       {
-        title: "Keep feedback close",
+        title: "Keep feedback immediate",
         detail:
-          "Short checks help learners correct misconceptions before those misconceptions become part of later work.",
+          "The response area sits beside the task so learners can correct a calculation before continuing to a dependent skill.",
       },
     ],
     finalOutput:
-      "A modular OpenLearning experience combining concise explanations, worked examples, guided practice, and interactive checks. Detailed media will be added here.",
-    metrics: [
-      { value: "—", label: "Modules completed", note: "Metric to be added" },
-      { value: "—", label: "Practice attempts", note: "Metric to be added" },
-      { value: "—", label: "Confidence change", note: "Evidence to be added" },
+      "An HTML-embedded formative practice lab with four skill modes, guided progression, progress states, answer checking, and immediate feedback.",
+    finalOutputs: [
+      "Four-skill practice sequence",
+      "Guided and self-selected practice modes",
+      "Immediate answer feedback",
+      "Embeddable HTML prototype",
     ],
+    metrics: [
+      { value: "4", label: "Practice skills", note: "One progressive learning sequence" },
+      { value: "1", label: "Interactive prototype", note: "Designed for LMS embedding" },
+    ],
+    impactNote: "The prototype demonstrates the interaction and feedback design. Learner testing and performance analytics were not available.",
     reflection:
-      "The work highlighted how structure and tone can change a learner's relationship with difficult material. Future documentation will show specific before-and-after examples.",
-    tools: ["OpenLearning", "Canva", "PowerPoint", "Google Workspace"],
+      "This artifact reinforced that a small, focused interaction can add meaningful practice when it is built around the decisions learners actually need to make.",
+    reflectionDetails: [
+      "The strongest design move was not adding more explanation; it was exposing the component skills and giving each one a clear feedback loop.",
+      "A future iteration would test item difficulty, error patterns, and the usefulness of the guided-versus-independent choice with learners.",
+    ],
+    tools: ["HTML", "CSS", "JavaScript", "OpenLearning"],
     accent: "blue",
   },
   {
@@ -326,9 +360,18 @@ export const projects: Project[] = [
     visible: true,
     featured: true,
     title: "Building Blocks",
-    type: "Leadership Development Program",
+    type: "Leadership Development Workshop Series",
+    platform: "Hybrid Workshop Series",
+    primaryRole: "Project Proponent / Primary Workshop Facilitator / SME Coordinator",
+    status: "Complete",
+    cardSubtitle: "Organizational Leadership Development",
+    domain: "Organizational Learning & Performance",
+    capability: "Workshop & Program Design",
+    context: "Student Organization / Organizational Development",
+    targetUsers: "HFHGC student officers and members responsible for organizational projects, partnerships, and continuity.",
+    heroImage: "/images/projects/building-blocks/building-blocks-poster.png",
     summary:
-      "A project-based officer development program that connects leadership concepts to the real work of running an organization.",
+      "A three-part workshop pathway that connected Habitat advocacy, organizational operations, and community-centered leadership to the real work of student officers.",
     focus: [
       "Organizational learning",
       "Facilitation",
@@ -336,9 +379,13 @@ export const projects: Project[] = [
       "Project-based learning",
     ],
     challenge:
-      "Create a practical learning journey for officers with different roles, experience levels, and immediate organizational responsibilities.",
+      "Student organizations experienced gaps in leadership development, knowledge transfer, project execution, and continuity as responsibilities moved between officers.",
+    challengeDetails: [
+      "The response needed to support immediate organizational work while strengthening the shared knowledge that future officers could build on.",
+      "A single information session would not address the range of advocacy, operational, and community-leadership responsibilities involved.",
+    ],
     role:
-      "Program designer, facilitator, activity designer, and organizational learning partner.",
+      "As project proponent, primary workshop facilitator, and SME coordinator, I shaped the pathway, translated organizational needs into sessions and activities, and connected specialist input to participant practice.",
     sourceMaterials: [
       "Officer role expectations",
       "Organizational goals and pain points",
@@ -346,11 +393,11 @@ export const projects: Project[] = [
       "Existing processes and project timelines",
     ],
     process: [
-      "Clarified performance needs with stakeholders",
-      "Mapped competencies to real officer responsibilities",
-      "Designed workshops around active problem-solving",
-      "Connected sessions through a shared project",
-      "Planned reflection and feedback checkpoints",
+      "Defined the organizational performance and continuity needs",
+      "Mapped three workshop themes to real officer responsibilities",
+      "Coordinated subject-matter expertise and session inputs",
+      "Designed facilitated activities around authentic organizational decisions",
+      "Delivered the series and gathered participant feedback",
     ],
     decisions: [
       {
@@ -370,76 +417,114 @@ export const projects: Project[] = [
       },
     ],
     finalOutput:
-      "A facilitated leadership development journey with practical workshops, shared project work, and reflection activities. Session artifacts will be added here.",
-    metrics: [
-      { value: "—", label: "Officers engaged", note: "Metric to be added" },
-      { value: "—", label: "Projects delivered", note: "Metric to be added" },
-      { value: "—", label: "Behavior change", note: "Evidence to be added" },
+      "A connected three-session pathway: Habitat101, Operations, and Community & Leadership Development with a Partnered Community.",
+    finalOutputs: [
+      "Three-part leadership development pathway",
+      "Facilitated workshops and active exercises",
+      "Operational and proposal-development learning materials",
+      "Coordinated SME contributions",
     ],
+    metrics: [
+      { value: "50+", label: "Total attendees", note: "Across the workshop series" },
+      { value: "9.7/10", label: "Audience feedback", note: "Engagement, novelty, and perceived impact" },
+      { value: "3", label: "Connected sessions", note: "One organizational learning pathway" },
+    ],
+    impactNote: "Only aggregate attendance and survey results are shown to protect participant privacy. No individual responses or identities are included.",
     reflection:
-      "This project deepened my interest in learning that sits close to performance. The next iteration will document stakeholder feedback and participant outcomes.",
-    tools: ["PowerPoint", "Canva", "Google Workspace", "Audacity"],
-    accent: "lime",
+      "Building Blocks strengthened my interest in learning that sits close to performance: participants were not learning leadership in the abstract, but using it to make better organizational decisions.",
+    reflectionDetails: [
+      "Coordinating SMEs required me to preserve specialist knowledge while shaping it into a coherent experience for participants with different roles and experience levels.",
+      "A future iteration would add delayed follow-up measures to understand which practices transferred into subsequent organizational projects.",
+    ],
+    tools: ["Canva", "PowerPoint", "Zoom", "Google Workspace"],
+    accent: "olive",
   },
   {
-    slug: "project-proposal-learning-website",
+    slug: "project-proposal-coach",
     order: 4,
     visible: true,
     featured: true,
-    title: "Project Proposal Learning Website",
-    type: "Performance Support Tool",
+    title: "Project Proposal Coach",
+    type: "Digital Learning Experience",
+    platform: "Web Prototype",
+    primaryRole: "Instructional Designer",
+    status: "Functional prototype",
+    cardSubtitle: "Guided Digital Learning Resource",
+    domain: "Organizational Learning & Performance",
+    capability: "Performance Support",
+    context: "Student Leadership / Performance Support",
+    targetUsers: "Student leaders preparing institutional activity proposals.",
+    heroImage: "/images/projects/project-proposal-coach/platform-entry-point.png",
     summary:
-      "A self-directed learning website that translates organizational guidelines into a clearer path from idea to viable proposal.",
+      "A self-paced digital tutorial and performance-support resource that turns complex institutional procedures into a clear path from project idea to post-activity requirements.",
     focus: [
-      "Guideline translation",
-      "Accessible self-directed learning",
       "Performance support",
+      "Self-paced learning",
+      "Information architecture",
+      "Procedural guidance",
     ],
     challenge:
-      "Turn dense organizational guidance into an accessible resource people can use at the exact moment they are planning and writing proposals.",
+      "Student leaders needed to navigate complex activity approval requirements, documentation procedures, and compliance guidelines. The challenge was not simply accessing information, but translating procedural knowledge into action when preparing real project proposals.",
+    challengeDetails: [
+      "The learning barrier was caused by information complexity and the difficulty of applying procedural guidance during authentic proposal work.",
+      "Learners needed both a clear way to understand the process and immediate support while using that process to develop a proposal.",
+    ],
     role:
-      "Content strategist, instructional designer, information architect, and website designer.",
+      "Instructional designer responsible for translating procedural documentation into a self-paced learning and performance-support experience.",
     sourceMaterials: [
-      "Project proposal guidelines",
-      "Templates and approval criteria",
-      "Common stakeholder questions",
-      "Examples of prior proposals",
+      "Institutional activity-approval procedures",
+      "Documentation and compliance guidelines",
+      "Project lifecycle requirements",
+      "Original Project Proposal Coach HTML prototype",
     ],
     process: [
-      "Audited the source material for decisions and actions",
-      "Organized content around the proposal workflow",
-      "Rewrote policy language into direct guidance",
-      "Added examples, checks, and reusable prompts",
-      "Built a scannable, self-directed web experience",
+      "Identified the actions student leaders needed to complete across the project lifecycle",
+      "Reorganized procedural information into learner-facing modules",
+      "Separated process learning from proposal application",
+      "Designed guided questioning for structured proposal development",
+      "Connected self-paced instruction with performance support at the moment of need",
     ],
     decisions: [
       {
-        title: "Organize around the task",
+        title: "Transform dense documentation into learner pathways",
         detail:
-          "Navigation follows what a user needs to decide and produce, rather than mirroring the original policy document.",
+          "Procedural requirements were reframed as a navigable sequence so learners could understand where they were, what mattered, and what came next.",
       },
       {
-        title: "Translate without diluting",
+        title: "Organize content around learner actions",
         detail:
-          "Plain-language explanations preserve essential requirements while making the next action obvious.",
+          "The experience follows the project lifecycle and the decisions learners need to make instead of reproducing the structure of the original manual.",
       },
       {
-        title: "Support the moment of need",
+        title: "Prototype guided performance support",
         detail:
-          "Examples and checks sit beside the relevant step so users do not have to remember guidance from a separate course.",
+          "A local proposal-coach prototype explores how guided prompts could support application after learners encounter the process; it is not presented as the finished learning solution.",
+      },
+      {
+        title: "Combine instruction with immediate application",
+        detail:
+          "Self-paced modules and guided proposal development create a shorter path between understanding a requirement and applying it to authentic work.",
       },
     ],
     finalOutput:
-      "A responsive performance-support website with task-based navigation, guided proposal development, and reusable resources. Screenshots will be added here.",
+      "A six-module digital tutorial organized around the project lifecycle, supported by a local guided-proposal prototype as an optional technical exploration.",
+    finalOutputs: [
+      "Project-lifecycle learning architecture",
+      "Learner-facing procedural modules",
+      "Guided proposal-support prototype",
+      "Standalone functional HTML prototype",
+    ],
     metrics: [
-      { value: "—", label: "Proposals supported", note: "Metric to be added" },
-      { value: "—", label: "Time saved", note: "Metric to be added" },
-      { value: "—", label: "Revision reduction", note: "Evidence to be added" },
+      { value: "—", label: "Learner outcomes", note: "Project outcomes to be measured" },
     ],
     reflection:
-      "The project strengthened my practice of designing the smallest useful learning intervention. Additional evidence will be added after stakeholder review.",
-    tools: ["ChatGPT", "Canva", "Google Workspace", "PowerPoint"],
-    accent: "yellow",
+      "Project Proposal Coach strengthened my understanding of learning design beyond traditional courses: the experience needed to reduce the distance between knowing a procedure and using it during an authentic task.",
+    reflectionDetails: [
+      "The work showed how self-paced instruction and performance support can operate as one connected experience rather than separate resources.",
+      "A future iteration would test the module sequence and coaching prompts with student leaders, then refine the support around the points where they still hesitate or need clarification.",
+    ],
+    tools: ["HTML", "CSS", "JavaScript", "Instructional Content Design"],
+    accent: "forest",
   },
 ];
 

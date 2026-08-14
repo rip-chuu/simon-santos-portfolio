@@ -51,49 +51,38 @@ const tools = [
   { name: "Google Workspace", descriptor: "Collaboration", logo: "/images/toolkit/google-workspace-logo.svg", logoShape: "wide" },
 ];
 
+const heroCategories = ["Higher Education", "Organizational Learning", "Performance Support", "Digital Learning"];
+
 export default function Home() {
   const projects = getFeaturedProjects();
+  const higherEducationProjects = projects.filter((project) => project.domain === "Higher Education");
+  const organizationalProjects = projects.filter((project) => project.domain === "Organizational Learning & Performance");
 
   return (
     <>
       <a className="skip-link" href="#main">Skip to content</a>
       <SiteHeader />
       <main id="main">
-        <section className="hero shell">
-          <div className="hero-copy">
+        <section className="hero hero-editorial shell">
+          <div className="hero-copy hero-editorial-copy">
+            <span className="hero-accent hero-accent-plus" aria-hidden="true">+</span>
+            <span className="hero-accent hero-accent-dot" aria-hidden="true" />
             <p className="eyebrow"><span className="status-dot" /> Simon Santos · Instructional Designer / LXD</p>
             <h1>Making learning <em>human.</em></h1>
             <p className="hero-lede">
               I design learner-centered experiences that transform complex ideas into meaningful, engaging learning.
             </p>
+            <ul className="hero-categories" aria-label="Project categories">
+              {heroCategories.map((category) => <li key={category}>{category}</li>)}
+            </ul>
             <p className="hero-disciplines">Psychology <span>×</span> Instructional Design <span>×</span> Creative Technology</p>
             <div className="button-row">
               <a className="button button-primary hero-primary-cta" href="#projects">View Projects <span aria-hidden="true">→</span></a>
               <a className="button button-secondary" href="#about">About Simon <span aria-hidden="true">→</span></a>
             </div>
           </div>
-          <div className="hero-visual">
-            <div className="visual-label">Learning, made human.</div>
-            <div className="visual-stage">
-              <span className="pixel-cross cross-one" aria-hidden="true">+</span>
-              <div className="portrait-frame">
-                <Image
-                  className="portrait-image"
-                  src="/images/profile/simon-santos-portrait.jpg"
-                  alt="Portrait of Simon Santos"
-                  fill
-                  priority
-                  sizes="(max-width: 920px) 80vw, 34vw"
-                />
-                <div className="portrait-intro">
-                  <strong>Simon Santos</strong>
-                  <span>Instructional Designer / LXD</span>
-                </div>
-              </div>
-            </div>
-          </div>
           <ul className="hero-proof" aria-label="Selected portfolio production highlights">
-            <li><strong>35+</strong><span>Lessons created</span></li>
+            <li><strong>35</strong><span>Lessons created</span></li>
             <li><strong>2</strong><span>University courses</span></li>
             <li><strong>40+</strong><span>Learning activities</span></li>
             <li><strong>OL</strong><span>OpenLearning development</span></li>
@@ -118,11 +107,16 @@ export default function Home() {
 
         <section className="projects-section section-pad" id="projects">
           <div className="shell">
-            <SectionIntro index="02" label="Featured projects" title="Learning experiences built for real humans." copy="Selected work across higher education, organizational learning, and performance support." />
-            <div className="project-grid">
-              {projects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index} expandable />)}
+            <SectionIntro index="02" label="Projects" title="Systems that help people learn and perform better." copy="Artifact-led work across asynchronous course development, interactive practice, and performance support." />
+            <div className="project-domain-group">
+              <header><span>Domain A</span><h3>Higher Education</h3><p>Asynchronous learning and interactive practice designed for independent university learners.</p></header>
+              <div className="project-grid">{higherEducationProjects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index} />)}</div>
             </div>
-            <div className="section-action"><a className="text-link" href="/projects">View all case studies <span aria-hidden="true">→</span></a></div>
+            <div className="project-domain-group">
+              <header><span>Domain B</span><h3>Organizational Learning &amp; Performance</h3><p>Workshop pathways and digital resources that help people act inside authentic systems.</p></header>
+              <div className="project-grid">{organizationalProjects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index + higherEducationProjects.length} />)}</div>
+            </div>
+            <div className="section-action"><a className="text-link" href="/projects">View all learning solutions <span aria-hidden="true">→</span></a></div>
           </div>
         </section>
 
@@ -160,13 +154,28 @@ export default function Home() {
 
         <section className="about-section section-pad" id="about">
           <div className="shell about-grid">
-            <div className="about-marker" aria-hidden="true"><span>PSY</span><strong>×</strong><span>LXD</span></div>
-            <div>
+            <div className="about-portrait-card">
+              <span className="about-portrait-label">The person behind the work</span>
+              <div className="about-portrait-frame">
+                <Image
+                  className="portrait-image"
+                  src="/images/profile/simon-santos-portrait.jpg"
+                  alt="Portrait of Simon Santos"
+                  fill
+                  sizes="(max-width: 920px) 85vw, 34vw"
+                />
+                <div className="portrait-intro">
+                  <strong>Simon Santos</strong>
+                  <span>Instructional Designer / LXD</span>
+                </div>
+              </div>
+            </div>
+            <div className="about-copy">
               <p className="eyebrow">04 · About me</p>
               <h2>Psychology taught me to look beneath the content.</h2>
-              <p className="about-lede">My background in Psychology shaped how I approach learning: not simply as information delivery, but as an experience influenced by motivation, context, behavior, and human connection.</p>
-              <p>I bring that lens to digital courses, assessments, workshops, and performance support—always asking what will help a learner understand, care, and act.</p>
-              <div className="future-note"><span>Next up</span><p>Education and selected experience can be added here as the portfolio grows.</p></div>
+              <p className="about-lede">I’m Simon—a Psychology graduate who found a natural home in Instructional Design and Learning Experience Design.</p>
+              <p>Psychology taught me to stay curious about how people think, what motivates them, and why context changes the way learning feels. I bring that human lens into the experiences I design, balancing structure with empathy, clarity, and a little creative play.</p>
+              <div className="about-signoff"><span>Learning, made human.</span><span aria-hidden="true">↗</span></div>
             </div>
           </div>
         </section>

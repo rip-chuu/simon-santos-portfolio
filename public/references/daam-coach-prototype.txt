@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAAM Proposal Coach</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #16a34a, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #15803d, #16a34a);
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #16a34a;
+            transform: translateY(-2px);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center cursor-pointer" onclick="showSection('home')">
+                    <i class="fa-solid fa-graduation-cap text-green-600 text-2xl mr-2"></i>
+                    <span class="font-bold text-xl tracking-tight text-gray-900">DAAM <span class="text-green-600">Coach</span></span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <button onclick="showSection('home')" class="nav-link font-medium text-gray-600 hover:text-green-600">Home</button>
+                    <button onclick="showSection('about')" class="nav-link font-medium text-gray-600 hover:text-green-600">About Us</button>
+                    <button onclick="showSection('services')" class="nav-link font-medium text-gray-600 hover:text-green-600">Services</button>
+                    <button onclick="showSection('contact')" class="nav-link font-medium text-gray-600 hover:text-green-600">Contact</button>
+                    <button onclick="showSection('builder')" class="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-full font-medium transition-colors shadow-sm">
+                        AI Builder
+                    </button>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-gray-600 hover:text-gray-900 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-2 pt-2 pb-3 space-y-1 sm:px-3 shadow-lg">
+            <button onclick="showSection('home'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-600 hover:bg-gray-50">Home</button>
+            <button onclick="showSection('about'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-600 hover:bg-gray-50">About Us</button>
+            <button onclick="showSection('services'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-600 hover:bg-gray-50">Services</button>
+            <button onclick="showSection('contact'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-600 hover:bg-gray-50">Contact</button>
+            <button onclick="showSection('builder'); toggleMobileMenu()" class="block w-full text-center mt-4 bg-green-600 text-white px-3 py-2 rounded-md text-base font-medium hover:bg-green-700">AI Builder</button>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow">
+        
+        <!-- HOME SECTION -->
+        <section id="home-section" class="section-container block">
+            <div class="bg-gradient-primary text-white overflow-hidden relative min-h-[80vh] flex items-center">
+                <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+                
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10 w-full">
+                    <div class="text-center mb-16">
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                            Master the <span class="text-green-200">DAAM Process</span>
+                        </h1>
+                        <p class="text-lg md:text-xl text-green-50 max-w-3xl mx-auto">
+                            Navigate the DLSU USG Activity Approval process with confidence. Choose your path to get started.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                        
+                        <!-- Entry Point A: Learn -->
+                        <div onclick="showSection('services')" class="bg-white rounded-3xl p-10 text-center cursor-pointer transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl border-4 border-transparent hover:border-green-300 group">
+                            <div class="w-24 h-24 mx-auto bg-blue-50 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-book-open text-4xl text-blue-600"></i>
+                            </div>
+                            <h2 class="text-3xl font-bold text-gray-900 mb-4">Learn the Process</h2>
+                            <p class="text-gray-600 mb-8 text-lg">New to project proposals? Go through our self-paced learning modules covering A-Forms, MOAs, and clearances.</p>
+                            <span class="inline-flex items-center justify-center bg-blue-100 text-blue-700 font-bold px-6 py-3 rounded-full group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                Browse Modules <i class="fa-solid fa-arrow-right ml-2"></i>
+                            </span>
+                        </div>
+
+                        <!-- Entry Point B: AI Coach -->
+                        <div onclick="showSection('builder')" class="bg-white rounded-3xl p-10 text-center cursor-pointer transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl border-4 border-transparent hover:border-green-300 group relative overflow-hidden">
+                            <div class="absolute top-0 right-0 bg-green-500 text-white text-xs font-bold px-4 py-1 rounded-bl-xl">Beta</div>
+                            <div class="w-24 h-24 mx-auto bg-green-50 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-robot text-4xl text-green-600"></i>
+                            </div>
+                            <h2 class="text-3xl font-bold text-gray-900 mb-4">Draft a Proposal</h2>
+                            <p class="text-gray-600 mb-8 text-lg">Have an event idea? Talk to our AI Proposal Coach to instantly brainstorm and format your Project Proposal Report.</p>
+                            <span class="inline-flex items-center justify-center bg-green-100 text-green-700 font-bold px-6 py-3 rounded-full group-hover:bg-green-600 group-hover:text-white transition-colors">
+                                Start Chatting <i class="fa-solid fa-arrow-right ml-2"></i>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT US SECTION -->
+        <section id="about-section" class="section-container hidden">
+            <div class="py-16 bg-gray-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h1 class="text-4xl font-bold text-gray-900 mb-4">About <span class="text-green-600">DAAM Coach</span></h1>
+                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Bridging the gap between student passion projects and institutional bureaucracy.</p>
+                    </div>
+
+                    <div class="flex flex-col lg:flex-row items-center gap-12 mb-20">
+                        <div class="lg:w-1/2">
+                            <img src="https://placehold.co/600x400/e2e8f0/16a34a?text=Student+Leaders+Collaborating" alt="Students Planning" class="rounded-2xl shadow-xl w-full">
+                        </div>
+                        <div class="lg:w-1/2 space-y-6">
+                            <h2 class="text-3xl font-bold text-gray-900">Our Mission</h2>
+                            <p class="text-gray-600 text-lg leading-relaxed">
+                                DAAM Coach was created by former student leaders who understand the frustration of having a great event idea stalled by complex paperwork. 
+                            </p>
+                            <p class="text-gray-600 text-lg leading-relaxed">
+                                Our mission is to empower incoming DLSU project proponents by demystifying the 81-page USG DAAM Operations Manual. We transform dense institutional documentation into a navigable, self-paced learning experience and provide AI tools to streamline the drafting process.
+                            </p>
+                            <div class="bg-green-50 border-l-4 border-green-600 p-4 rounded-r-lg">
+                                <p class="text-green-800 font-medium italic">"We believe student leaders should spend more time leading and less time worrying about formatting errors."</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-3xl shadow-lg p-10 lg:p-16 border border-gray-100">
+                        <h2 class="text-2xl font-bold text-center text-gray-900 mb-10">Understanding the DAAM Ecosystem</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="border border-gray-200 rounded-xl p-6">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mr-4">
+                                        <i class="fa-solid fa-building-columns text-xl"></i>
+                                    </div>
+                                    <h3 class="text-xl font-bold">What is DAAM?</h3>
+                                </div>
+                                <p class="text-gray-600">The Department of Activity Approval and Monitoring (DAAM) is an executive department under the USG Office of the Executive Secretary. They process, screen, and approve projects to ensure they uphold university standards and the Lasallian Identity.</p>
+                            </div>
+                            <div class="border border-gray-200 rounded-xl p-6">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center mr-4">
+                                        <i class="fa-solid fa-scale-balanced text-xl"></i>
+                                    </div>
+                                    <h3 class="text-xl font-bold">The Accountability System</h3>
+                                </div>
+                                <p class="text-gray-600">DAAM enforces strict guidelines. Violations like late submissions or posting unapproved pubs result in demerits, which can lead to activity bans. Our goal is to help you maintain a perfect record.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES SECTION -->
+        <section id="services-section" class="section-container hidden">
+            <div class="py-16 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h1 class="text-4xl font-bold text-gray-900 mb-4">Learning <span class="text-green-600">Modules</span></h1>
+                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Follow the project lifecycle. These modules break down the operations manual into digestible, actionable steps.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        
+                        <!-- Module 1 -->
+                        <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden card-hover flex flex-col h-full">
+                            <div class="bg-gray-50 border-b border-gray-200 p-4 flex items-center">
+                                <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded uppercase tracking-wide">Module 1</span>
+                            </div>
+                            <div class="p-6 flex-grow">
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">DAAM Fundamentals</h3>
+                                <p class="text-gray-600 text-sm mb-4">Understanding the rules, committees, and who to contact.</p>
+                                <ul class="space-y-2 text-sm text-gray-600 mb-6">
+                                    <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Organizational Background</li>
+                                    <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> The Penalty System (Demerits)</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-gray-50 mt-auto border-t border-gray-100">
+                                <button onclick="showSection('module1')" class="text-green-600 font-medium hover:text-green-800 text-sm flex items-center transition">View Lesson <i class="fa-solid fa-arrow-right ml-1"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Module 2 -->
+                        <div class="bg-white border border-green-200 rounded-2xl overflow-hidden shadow-[0_0_15px_rgba(22,163,74,0.1)] relative flex flex-col h-full">
+                            <div class="absolute top-0 right-0 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">Start Here</div>
+                            <div class="bg-green-50 border-b border-green-100 p-4 flex items-center">
+                                <span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded uppercase tracking-wide">Module 2</span>
+                            </div>
+                            <div class="p-6 flex-grow">
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">Planning & Pre-Acts</h3>
+                                <p class="text-gray-600 text-sm mb-4">Getting the green light for your project. Generating ARCs and drafting proposals.</p>
+                                <ul class="space-y-2 text-sm text-gray-600 mb-6">
+                                    <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Activity Reference Codes (ARC)</li>
+                                    <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> A-Form & PPR Mastery</li>
+                                    <li class="flex items-start"><i class="fa-solid fa-star text-yellow-400 mt-1 mr-2"></i> <strong>Includes AI Proposal Builder</strong></li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-green-50 mt-auto border-t border-green-100">
+                                <button onclick="showSection('module2')" class="text-green-700 font-bold hover:text-green-800 text-sm flex items-center transition">View Lesson <i class="fa-solid fa-arrow-right ml-1"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Module 3 -->
+                        <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden card-hover flex flex-col h-full">
+                            <div class="bg-gray-50 border-b border-gray-200 p-4 flex items-center">
+                                <span class="bg-purple-100 text-purple-800 text-xs font-bold px-2 py-1 rounded uppercase tracking-wide">Module 3</span>
+                            </div>
+                            <div class="p-6 flex-grow">
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">Partnerships & MOAs</h3>
+                                <p class="text-gray-600 text-sm mb-4">Collaborating safely with internal and external groups.</p>
+                                <ul class="space-y-2 text-sm text-gray-600 mb-6">
+                                    <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Internal vs. External Lead Times</li>
+                                    <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> The Joint Review Form (JRF)</li>
+                                    <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Required Signatories Matrix</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-gray-50 mt-auto border-t border-gray-100">
+                                <button onclick="showSection('module3')" class="text-green-600 font-medium hover:text-green-800 text-sm flex items-center transition">View Lesson <i class="fa-solid fa-arrow-right ml-1"></i></button>
+                            </div>
+                        </div>
+
+                         <!-- Module 4 -->
+                         <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden card-hover flex flex-col h-full">
+                            <div class="bg-gray-50 border-b border-gray-200 p-4 flex items-center">
+                                <span class="bg-orange-100 text-orange-800 text-xs font-bold px-2 py-1 rounded uppercase tracking-wide">Module 4</span>
+                            </div>
+                            <div class="p-6 flex-grow">
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">Marketing & Comms</h3>
+                                <p class="text-gray-600 text-sm mb-4">Navigating the Publicity & Marketing (P&M) approval process.</p>
+                                <ul class="space-y-2 text-sm text-gray-600 mb-6">
+                                    <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> P&M 24-hour Lead Times</li>
+                                    <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Sunday/Holiday Posting Rules</li>
+                                    <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> DLSU Trademark Usage</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-gray-50 mt-auto border-t border-gray-100">
+                                <button onclick="showSection('module4')" class="text-green-600 font-medium hover:text-green-800 text-sm flex items-center transition">View Lesson <i class="fa-solid fa-arrow-right ml-1"></i></button>
+                            </div>
+                        </div>
+
+                         <!-- Module 5 -->
+                         <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden card-hover flex flex-col h-full">
+                            <div class="bg-gray-50 border-b border-gray-200 p-4 flex items-center">
+                                <span class="bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded uppercase tracking-wide">Module 5</span>
+                            </div>
+                            <div class="p-6 flex-grow">
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">Navigating Changes</h3>
+                                <p class="text-gray-600 text-sm mb-4">What to do when plans shift: Mastering the Special Approval Slip (SAS).</p>
+                                <ul class="space-y-2 text-sm text-gray-600 mb-6">
+                                    <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> The 6 SAS Types</li>
+                                    <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Activity Cancellations</li>
+                                    <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Non-GOSM Event Approvals</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-gray-50 mt-auto border-t border-gray-100">
+                                <button onclick="showSection('module5')" class="text-green-600 font-medium hover:text-green-800 text-sm flex items-center transition">View Lesson <i class="fa-solid fa-arrow-right ml-1"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Module 6 -->
+                        <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden card-hover flex flex-col h-full">
+                            <div class="bg-gray-50 border-b border-gray-200 p-4 flex items-center">
+                                <span class="bg-teal-100 text-teal-800 text-xs font-bold px-2 py-1 rounded uppercase tracking-wide">Module 6</span>
+                            </div>
+                            <div class="p-6 flex-grow">
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">Closure & Clearances</h3>
+                                <p class="text-gray-600 text-sm mb-4">Wrapping up your event, AMT evaluations, and getting term clearance.</p>
+                                <ul class="space-y-2 text-sm text-gray-600 mb-6">
+                                    <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Post-Activity Requirements</li>
+                                    <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Activity Monitoring (AMT) Prep</li>
+                                    <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Filing Term-End Reports</li>
+                                </ul>
+                            </div>
+                            <div class="p-4 bg-gray-50 mt-auto border-t border-gray-100">
+                                <button onclick="showSection('module6')" class="text-green-600 font-medium hover:text-green-800 text-sm flex items-center transition">View Lesson <i class="fa-solid fa-arrow-right ml-1"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODULE 1: DAAM FUNDAMENTALS -->
+        <section id="module1-section" class="section-container hidden">
+            <div class="py-12 bg-gray-50">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <button onclick="showSection('services')" class="text-green-600 font-medium hover:text-green-800 mb-6 inline-flex items-center">
+                        <i class="fa-solid fa-arrow-left mr-2"></i> Back to Modules
+                    </button>
+                    <div class="bg-white rounded-3xl shadow-sm border border-gray-200 p-8 md:p-12">
+                        <div class="mb-8 border-b border-gray-100 pb-8">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide mb-4 inline-block">Module 1</span>
+                            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">DAAM Fundamentals</h1>
+                            <p class="text-lg text-gray-600">Understanding the rules, committees, and the accountability system.</p>
+                        </div>
+                        
+                        <div class="prose prose-green max-w-none text-gray-700 space-y-6">
+                            <h3 class="text-2xl font-bold text-gray-900">What is DAAM?</h3>
+                            <p>The Department of Activity Approval and Monitoring (DAAM) is an executive department under the USG Office of the Executive Secretary. It ensures all activities align with USG principles and the Lasallian Identity. <strong>Work Hours:</strong> Mondays to Saturdays, 8:00 AM to 10:00 PM.</p>
+
+                            <h3 class="text-2xl font-bold text-gray-900 mt-8">The Six Committees</h3>
+                            <ul class="space-y-3 list-disc pl-5">
+                                <li><strong>APS (Activity Processing & Screening):</strong> Reviews and approves pre-activity requirements.</li>
+                                <li><strong>SSC (Special Slips and Clearances):</strong> Handles Special Approval Slips (SAS) and Term-End Clearances.</li>
+                                <li><strong>MST (MOA Screening Team):</strong> Reviews Memorandums of Agreement for internal and external partnerships.</li>
+                                <li><strong>P&M (Publicity & Marketing):</strong> Approves publicity materials and monitors posting guidelines.</li>
+                                <li><strong>AMT (Activity Monitoring Team):</strong> Evaluates the actual execution of events and participant feedback.</li>
+                                <li><strong>ADM (Activity Documentation & Management):</strong> Approves post-activity requirements.</li>
+                            </ul>
+
+                            <h3 class="text-2xl font-bold text-gray-900 mt-8">The Penalty System (Demerits)</h3>
+                            <p>DAAM enforces strict accountability. Violations result in demerit points ranging from 0.5 to over 14 points. Accumulating points leads to activity bans.</p>
+                            <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg my-4">
+                                <h4 class="font-bold text-red-800 mb-2">Common Offenses:</h4>
+                                <ul class="list-disc pl-5 text-sm text-red-700 space-y-1">
+                                    <li>Late submission of Pre-Acts or Post-Acts.</li>
+                                    <li>Posting publication materials without DAAM P&M approval.</li>
+                                    <li>Conducting an activity without approved Pre-Acts.</li>
+                                    <li>Bypassing DAAM or SLIFE for signatures.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODULE 2: PLANNING & PRE-ACTS -->
+        <section id="module2-section" class="section-container hidden">
+            <div class="py-12 bg-gray-50">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <button onclick="showSection('services')" class="text-green-600 font-medium hover:text-green-800 mb-6 inline-flex items-center">
+                        <i class="fa-solid fa-arrow-left mr-2"></i> Back to Modules
+                    </button>
+                    <div class="bg-white rounded-3xl shadow-sm border border-gray-200 p-8 md:p-12">
+                        <div class="mb-8 border-b border-gray-100 pb-8">
+                            <span class="bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide mb-4 inline-block">Module 2</span>
+                            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Planning & Pre-Acts</h1>
+                            <p class="text-lg text-gray-600">Generating ARCs, drafting proposals, and getting the green light.</p>
+                        </div>
+                        
+                        <div class="prose prose-green max-w-none text-gray-700 space-y-6">
+                            <h3 class="text-2xl font-bold text-gray-900">The Activity Reference Code (ARC)</h3>
+                            <p>Before submitting any document, you must log your activity via the DAAM ARC Form to generate a unique code. This code tracks your project throughout its lifecycle.</p>
+
+                            <h3 class="text-2xl font-bold text-gray-900 mt-8">Submission Lead Times</h3>
+                            <p>All pre-activity documents must be submitted <strong>4 weeks before</strong> the date of the activity. If the activity incurs zero expenses, the lead time is reduced to <strong>2 weeks</strong>.</p>
+
+                            <h3 class="text-2xl font-bold text-gray-900 mt-8">Mastering the PPR (Project Proposal Report)</h3>
+                            <p>The PPR is the core of your pre-acts. Pay strict attention to these formatting rules:</p>
+                            <ul class="space-y-3 list-disc pl-5">
+                                <li><strong>Objectives:</strong> You must have exactly 3 objectives, and each must start with the word "To...".</li>
+                                <li><strong>Brief Context:</strong> Must be exactly 3 paragraphs answering the template questions.</li>
+                                <li><strong>Comprehensive Program Design (CPD):</strong> For physical activities, the timeline MUST include a "Pre-registration" slot, a "USG AMT Evaluation" slot (exactly 5 minutes before the event ends), and a "Clean-up" time.</li>
+                                <li><strong>Finances:</strong> Breakdown of Expenses and Projected Income must format all currencies as "Php 0.00".</li>
+                            </ul>
+                            
+                            <div class="mt-8 text-center">
+                                <button onclick="showSection('builder')" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-bold transition shadow-md">
+                                    <i class="fa-solid fa-robot mr-2"></i> Use AI Coach to Draft PPR
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODULE 3: PARTNERSHIPS & MOAS -->
+        <section id="module3-section" class="section-container hidden">
+            <div class="py-12 bg-gray-50">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <button onclick="showSection('services')" class="text-green-600 font-medium hover:text-green-800 mb-6 inline-flex items-center">
+                        <i class="fa-solid fa-arrow-left mr-2"></i> Back to Modules
+                    </button>
+                    <div class="bg-white rounded-3xl shadow-sm border border-gray-200 p-8 md:p-12">
+                        <div class="mb-8 border-b border-gray-100 pb-8">
+                            <span class="bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide mb-4 inline-block">Module 3</span>
+                            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Partnerships & MOAs</h1>
+                            <p class="text-lg text-gray-600">Collaborating safely with internal and external groups.</p>
+                        </div>
+                        
+                        <div class="prose prose-green max-w-none text-gray-700 space-y-6">
+                            <div class="bg-purple-50 p-4 rounded-lg mb-6">
+                                <p class="text-purple-800 font-medium m-0"><strong>Crucial Rule:</strong> All projects with MOAs or any kind of partnership must be routed through SLIFE.</p>
+                            </div>
+
+                            <h3 class="text-2xl font-bold text-gray-900">Internal MOAs (Within DLSU)</h3>
+                            <ul class="space-y-2 list-disc pl-5">
+                                <li><strong>Lead Time:</strong> Must be sent to DAAM <strong>7 working days</strong> prior to your activity date.</li>
+                                <li><strong>Signatories:</strong> Must be witnessed by the Director of Office of Student LIFE (James Laxa) and the Chairperson of DAAM (Jiannah Alyssa Bayon).</li>
+                                <li><strong>Pre-Acts Phase:</strong> You must attach FINAL but UNSIGNED internal MOAs in your pre-activity requirements.</li>
+                            </ul>
+
+                            <h3 class="text-2xl font-bold text-gray-900 mt-8">External MOAs (Outside DLSU)</h3>
+                            <ul class="space-y-2 list-disc pl-5">
+                                <li><strong>Lead Time:</strong> Must be sent <strong>14 working days</strong> prior to the activity date.</li>
+                                <li><strong>Pre-Acts Phase:</strong> Only DRAFT MOAs are needed during the pre-acts submission.</li>
+                                <li><strong>Review:</strong> Non-DLSU templates require a Joint Review Form (JRF) and strict review by the Office of the University Legal Counsel (OULC).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODULE 4: MARKETING & COMMS -->
+        <section id="module4-section" class="section-container hidden">
+            <div class="py-12 bg-gray-50">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <button onclick="showSection('services')" class="text-green-600 font-medium hover:text-green-800 mb-6 inline-flex items-center">
+                        <i class="fa-solid fa-arrow-left mr-2"></i> Back to Modules
+                    </button>
+                    <div class="bg-white rounded-3xl shadow-sm border border-gray-200 p-8 md:p-12">
+                        <div class="mb-8 border-b border-gray-100 pb-8">
+                            <span class="bg-orange-100 text-orange-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide mb-4 inline-block">Module 4</span>
+                            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Marketing & Comms</h1>
+                            <p class="text-lg text-gray-600">Navigating the Publicity & Marketing (P&M) approval process.</p>
+                        </div>
+                        
+                        <div class="prose prose-green max-w-none text-gray-700 space-y-6">
+                            <h3 class="text-2xl font-bold text-gray-900">P&M Guidelines & Lead Times</h3>
+                            <p>All publicity materials must be approved by DAAM. Materials must be submitted <strong>24 hours before</strong> the intended posting date and time.</p>
+                            
+                            <h3 class="text-2xl font-bold text-gray-900 mt-8">The Sunday & Holiday Rule</h3>
+                            <p>Posting of publicity materials is restricted to <strong>Monday to Saturday only</strong>. No events or standard pubs shall be posted during Sundays or Holidays.</p>
+                            <p><em>Exceptions (Student Services):</em> Academic advice, grievances, DLSU Admin announcements, or statement on national issues (which require SLIFE approval) are permitted on these days.</p>
+
+                            <h3 class="text-2xl font-bold text-gray-900 mt-8">DLSU Trademarks</h3>
+                            <p>Any pub utilizing DLSU Trademarks (Animo La Salle, DLSU logos, images of facades) requires approval from DIPO (Intellectual Property Office) and STRATCOM. You must submit a Trademark Use Request Form before DAAM can approve.</p>
+
+                            <h3 class="text-2xl font-bold text-gray-900 mt-8">Broadcast Consent</h3>
+                            <p>If you are live-streaming or releasing videos featuring external speakers, a Broadcast Consent Form (BCF) is mandatory and must be sent to SLIFE 1 week before the event.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODULE 5: NAVIGATING CHANGES -->
+        <section id="module5-section" class="section-container hidden">
+            <div class="py-12 bg-gray-50">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <button onclick="showSection('services')" class="text-green-600 font-medium hover:text-green-800 mb-6 inline-flex items-center">
+                        <i class="fa-solid fa-arrow-left mr-2"></i> Back to Modules
+                    </button>
+                    <div class="bg-white rounded-3xl shadow-sm border border-gray-200 p-8 md:p-12">
+                        <div class="mb-8 border-b border-gray-100 pb-8">
+                            <span class="bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide mb-4 inline-block">Module 5</span>
+                            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Navigating Changes (SAS)</h1>
+                            <p class="text-lg text-gray-600">Mastering the Special Approval Slip (SAS) when plans shift.</p>
+                        </div>
+                        
+                        <div class="prose prose-green max-w-none text-gray-700 space-y-6">
+                            <p>If activity details change after your pre-acts are approved (date, venue, finances, partners) or if an activity is canceled, you MUST file a Special Approval Slip (SAS). <strong>The SAS must be submitted prior to implementing the change.</strong></p>
+
+                            <h3 class="text-2xl font-bold text-gray-900 mt-8">The 6 Types of SAS</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                <div class="bg-white border border-gray-200 p-4 rounded-lg">
+                                    <h4 class="font-bold text-gray-900">1. Late Submissions</h4>
+                                    <p class="text-sm">Required if you submit Pre-Acts or Post-Acts past their respective deadlines.</p>
+                                </div>
+                                <div class="bg-white border border-gray-200 p-4 rounded-lg">
+                                    <h4 class="font-bold text-gray-900">2. In Case of Change</h4>
+                                    <p class="text-sm">For modifying details (Date, Time, Venue, CPD) in APPROVED pre-acts.</p>
+                                </div>
+                                <div class="bg-white border border-gray-200 p-4 rounded-lg">
+                                    <h4 class="font-bold text-gray-900">3. Cancellation</h4>
+                                    <p class="text-sm">To officially cancel an approved event or an invited partnership MOA.</p>
+                                </div>
+                                <div class="bg-white border border-gray-200 p-4 rounded-lg">
+                                    <h4 class="font-bold text-gray-900">4. Activity Not in GOSM</h4>
+                                    <p class="text-sm">To implement spontaneous projects outside your approved term timeline.</p>
+                                </div>
+                                <div class="bg-white border border-gray-200 p-4 rounded-lg">
+                                    <h4 class="font-bold text-gray-900">5. Lost A-Form</h4>
+                                    <p class="text-sm">If the original approved A-Form is lost prior to filing finance docs.</p>
+                                </div>
+                                <div class="bg-white border border-gray-200 p-4 rounded-lg">
+                                    <h4 class="font-bold text-gray-900">6. Additional MOAs</h4>
+                                    <p class="text-sm">If you need to add more partners after pre-acts have already been approved.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODULE 6: CLOSURE & CLEARANCES -->
+        <section id="module6-section" class="section-container hidden">
+            <div class="py-12 bg-gray-50">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <button onclick="showSection('services')" class="text-green-600 font-medium hover:text-green-800 mb-6 inline-flex items-center">
+                        <i class="fa-solid fa-arrow-left mr-2"></i> Back to Modules
+                    </button>
+                    <div class="bg-white rounded-3xl shadow-sm border border-gray-200 p-8 md:p-12">
+                        <div class="mb-8 border-b border-gray-100 pb-8">
+                            <span class="bg-teal-100 text-teal-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide mb-4 inline-block">Module 6</span>
+                            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Closure & Clearances</h1>
+                            <p class="text-lg text-gray-600">Wrapping up your event, AMT evaluations, and term clearance.</p>
+                        </div>
+                        
+                        <div class="prose prose-green max-w-none text-gray-700 space-y-6">
+                            <h3 class="text-2xl font-bold text-gray-900">AMT Event Evaluation</h3>
+                            <p>For monitored activities, the Activity Monitoring Team (AMT) requires you to distribute an Audience Feedback Form. You must secure <strong>at least 3 to 5 responses</strong> within one week. Failure to gather feedback results in a failing grade and potential activity bans.</p>
+
+                            <h3 class="text-2xl font-bold text-gray-900 mt-8">Post-Activity Requirements</h3>
+                            <p>Post-acts must be submitted <strong>ONE MONTH</strong> after the last day of activity execution. Required documents include:</p>
+                            <ul class="space-y-2 list-disc pl-5">
+                                <li>Post-Activity Report (Written in 3rd person)</li>
+                                <li>Audited List of Expenses (from OTREAS)</li>
+                                <li>List of Pictures (Minimum of 3 photos with 1-sentence explanations)</li>
+                                <li>List of Approved Publicity Materials (Screenshots of P&M approvals)</li>
+                            </ul>
+
+                            <h3 class="text-2xl font-bold text-gray-900 mt-8">Term-End Report (TER) & Clearance</h3>
+                            <p>To operate in the next term, a unit must be cleared. The TER summarizes all projects and requires you to list:</p>
+                            <ol class="space-y-2 list-decimal pl-5">
+                                <li>Activities implemented during the term.</li>
+                                <li>GOSM activities that did not push through (No approved pre-acts).</li>
+                                <li>Canceled Activities (Had approved pre-acts, requires SAS).</li>
+                                <li>All processed Memorandum of Agreements.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI BUILDER / CHATBOT SECTION -->
+        <section id="builder-section" class="section-container hidden h-[calc(100vh-64px)] overflow-hidden">
+            <div class="bg-gray-50 h-full flex flex-col max-w-5xl mx-auto border-x border-gray-200 shadow-xl">
+                
+                <!-- Chat Header -->
+                <div class="bg-white border-b border-gray-200 p-4 flex items-center justify-between z-10 shadow-sm">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3 relative">
+                            <i class="fa-solid fa-robot text-green-600"></i>
+                            <span class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></span>
+                        </div>
+                        <div>
+                            <h2 class="font-bold text-gray-900">DAAM Proposal Coach</h2>
+                            <p class="text-xs text-green-600 font-medium">Online • Ready to draft</p>
+                        </div>
+                    </div>
+                    <button onclick="showSection('home')" class="text-gray-500 hover:text-gray-900 bg-gray-100 hover:bg-gray-200 p-2 rounded-full transition">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <!-- Chat History Window -->
+                <div id="chat-window" class="flex-grow p-6 overflow-y-auto bg-gray-50 flex flex-col gap-4">
+                    
+                    <!-- Welcome Message (AI) -->
+                    <div class="flex items-start max-w-[80%]">
+                        <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-2 flex-shrink-0 mt-1">
+                            <i class="fa-solid fa-robot text-sm text-green-600"></i>
+                        </div>
+                        <div class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-gray-100 text-gray-700">
+                            <p class="mb-2">Hello! I'm the USG DAAM Proposal Coach. I'm here to help you draft your Project Proposal Report (PPR) based on the Operations Manual.</p>
+                            <p>To get started, we are entering <strong>Phase 1: Discovery</strong>.</p>
+                            <p class="font-medium mt-2 text-green-800">What is the title of your event, who is your target audience, and what are the proposed dates?</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Chat Input Area -->
+                <div class="bg-white border-t border-gray-200 p-4">
+                    <div class="flex items-end bg-gray-100 rounded-2xl p-2 border border-transparent focus-within:border-green-300 focus-within:bg-white transition-colors shadow-inner">
+                        <textarea id="chat-input" rows="2" class="w-full bg-transparent border-none focus:ring-0 resize-none px-3 py-2 text-gray-700 max-h-32 placeholder-gray-400" placeholder="Type your event details here..."></textarea>
+                        <button id="send-button" onclick="handleSendMessage()" class="bg-green-600 hover:bg-green-700 text-white w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 transition-transform active:scale-95 mb-1 mr-1">
+                            <i class="fa-solid fa-paper-plane text-sm"></i>
+                        </button>
+                    </div>
+                    <p class="text-center text-xs text-gray-400 mt-2">The AI formats text but cannot submit documents. Always verify details against the operations manual.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact-section" class="section-container hidden">
+            <div class="py-16 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center mb-16">
+                        <h1 class="text-4xl font-bold text-gray-900 mb-4">Get in <span class="text-green-600">Touch</span></h1>
+                        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Have questions about the manual, a pending document, or a complex MOA? Reach out to the DAAM team.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-6">Contact Information</h2>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <i class="fa-solid fa-envelope text-lg"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h3 class="text-lg font-bold text-gray-900">Email Us</h3>
+                                        <p class="text-gray-600">For general inquiries and document follow-ups.</p>
+                                        <a href="mailto:usgdaam@dlsu.edu.ph" class="text-green-600 font-medium hover:underline">usgdaam@dlsu.edu.ph</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <i class="fa-solid fa-location-dot text-lg"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h3 class="text-lg font-bold text-gray-900">Visit the Office</h3>
+                                        <p class="text-gray-600 leading-relaxed">Room 301, Bro. Connon Hall<br>De La Salle University<br>2401 Taft Avenue, Manila</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start">
+                                    <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                        <i class="fa-solid fa-clock text-lg"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h3 class="text-lg font-bold text-gray-900">Operating Hours</h3>
+                                        <div class="grid grid-cols-2 gap-2 mt-2 text-sm">
+                                            <div class="font-medium text-gray-700">Monday - Friday:</div>
+                                            <div class="text-gray-600">8:00 AM - 10:00 PM</div>
+                                            <div class="font-medium text-gray-700">Saturday:</div>
+                                            <div class="text-gray-600">8:00 AM - 12:00 PM</div>
+                                            <div class="font-medium text-gray-700 text-red-500">Sunday & Holidays:</div>
+                                            <div class="text-red-500">Closed</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Form -->
+                        <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-6">Send a Message</h2>
+                            <form onsubmit="event.preventDefault(); alert('In a live environment, this would submit to the DAAM team.');">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                                        <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" placeholder="Juan Dela Cruz" required>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">DLSU Email</label>
+                                        <input type="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" placeholder="juan_delacruz@dlsu.edu.ph" required>
+                                    </div>
+                                </div>
+                                <div class="mb-6">
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">USG Unit / Organization</label>
+                                    <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" placeholder="e.g., FAST, CSO, etc.">
+                                </div>
+                                <div class="mb-6">
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Subject (Include ARC if applicable)</label>
+                                    <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500">
+                                        <option>Pre-Activity Inquiry</option>
+                                        <option>Post-Activity / Clearance</option>
+                                        <option>MOA / Partnership Status</option>
+                                        <option>Publicity Material Approval</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <div class="mb-6">
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                                    <textarea rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" placeholder="How can we help?" required></textarea>
+                                </div>
+                                <button type="submit" class="w-full bg-green-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-700 transition duration-300">
+                                    Send Message
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center mb-4">
+                    <i class="fa-solid fa-graduation-cap text-green-500 text-2xl mr-2"></i>
+                    <span class="font-bold text-xl tracking-tight">DAAM <span class="text-green-500">Coach</span></span>
+                </div>
+                <p class="text-gray-400 text-sm max-w-md mb-4">An instructional tool designed to help student leaders navigate the DLSU USG Activity Approval process effectively and compliantly.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fa-brands fa-facebook text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fa-brands fa-twitter text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fa-brands fa-instagram text-xl"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4 border-b border-gray-700 pb-2">Quick Links</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#" onclick="showSection('services'); return false;" class="hover:text-green-400 transition">Learning Modules</a></li>
+                    <li><a href="#" onclick="showSection('builder'); return false;" class="hover:text-green-400 transition">AI Proposal Builder</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition">Reference Hub (Drive)</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition">Download Manual PDF</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4 border-b border-gray-700 pb-2">Important Forms</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-green-400 transition">Pre-Activity Submission</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition">Post-Activity Submission</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition">SAS Submission Logger</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition">Clearances Tracking</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
+            <p>&copy; 2026 DAAM Coach Prototype. For internal DLSU USG use planning. Not an official university site.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Single Page Application logic
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section-container');
+            sections.forEach(section => {
+                section.classList.remove('block');
+                section.classList.add('hidden');
+            });
+
+            // Show target section
+            const target = document.getElementById(sectionId + '-section');
+            if (target) {
+                target.classList.remove('hidden');
+                target.classList.add('block');
+            }
+
+            // Scroll to top smoothly unless it's the builder (keep it fixed)
+            if(sectionId !== 'builder') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+            }
+        }
+
+        // --- Chatbot Logic ---
+
+        const systemInstruction = `Act as the USG DAAM Proposal Coach. I am a DLSU student leader planning an event. Guide me through drafting my Project Proposal Report (PPR) based on the Operations Manual. 
+
+You MUST strictly follow these rules:
+1. Ask me questions ONE PHASE AT A TIME. 
+2. DO NOT move to the next phase until I answer the current one.
+3. Be friendly but professional.
+
+Here are the phases you must walk me through:
+Phase 1: Discovery. Ask for my event title, target audience, and dates. Wait for reply.
+Phase 2: The Narrative. Ask me what the event is about. Then, draft the "Brief Context/Perspective of the Activity" into exactly three formal paragraphs based on my answer. Wait for reply.
+Phase 3: Objectives. Ask for my goals. Rewrite them into exactly three bullet points. Every bullet point MUST start with the word "To...". Wait for reply.
+Phase 4: Timeline. Ask for the event flow. Build the Comprehensive Program Design (CPD) table. For physical activities, you MUST include a "Pre-registration" slot, a "USG AMT Evaluation" slot exactly 5 minutes before the end, plus a "Clean-up" time.
+Phase 5: Output & Reminders. Provide the final clean text for me to copy. Remind me that I must manually handle the "Breakdown of Expenses" using the exact format "Php 0.00" and secure physical signatures.`;
+
+        // Initialize chat history with the system instruction and the first assistant message (that is hardcoded in the HTML)
+        let chatHistory = [
+            {
+                role: "user",
+                parts: [{ text: "Hello! Let's draft my proposal." }]
+            },
+            {
+                role: "model",
+                parts: [{ text: "Hello! I'm the USG DAAM Proposal Coach. I'm here to help you draft your Project Proposal Report (PPR) based on the Operations Manual.\n\nTo get started, we are entering **Phase 1: Discovery**.\n\nWhat is the title of your event, who is your target audience, and what are the proposed dates?" }]
+            }
+        ];
+
+        const chatWindow = document.getElementById('chat-window');
+        const chatInput = document.getElementById('chat-input');
+        const sendButton = document.getElementById('send-button');
+        
+        let isWaitingForResponse = false;
+
+        // Handle Enter key to send
+        chatInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                if (!isWaitingForResponse) {
+                    handleSendMessage();
+                }
+            }
+        });
+
+        async function handleSendMessage() {
+            if (isWaitingForResponse) return;
+
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            // Lock UI while processing
+            isWaitingForResponse = true;
+            chatInput.disabled = true;
+            sendButton.disabled = true;
+            sendButton.classList.add('opacity-50', 'cursor-not-allowed');
+
+            // 1. Add User Message to UI
+            appendMessage(message, 'user');
+            chatInput.value = '';
+            
+            // 2. Add User Message to History
+            chatHistory.push({ role: "user", parts: [{ text: message }] });
+
+            // 3. Show Loading Indicator
+            const loadingId = appendLoading();
+
+            // 4. Call Gemini API
+            try {
+                const responseText = await fetchGeminiResponse(chatHistory);
+                
+                // 5. Remove Loading Indicator
+                document.getElementById(loadingId).remove();
+
+                // 6. Add AI Response to UI
+                appendMessage(responseText, 'model');
+
+                // 7. Add AI Response to History
+                chatHistory.push({ role: "model", parts: [{ text: responseText }] });
+
+            } catch (error) {
+                console.error("Detailed API Error:", error);
+                document.getElementById(loadingId).remove();
+                
+                let errorMessage = "Sorry, I encountered an error connecting to the AI. ";
+                
+                // Provide actionable feedback based on the error
+                if (error.message.includes("API_KEY_INVALID") || error.message.includes("API key")) {
+                    errorMessage += "<strong>Error: Missing/Invalid API Key.</strong> If you exported this file to run locally, you must paste your own Google Gemini API key into the 'apiKey' variable in the code.";
+                } else {
+                    errorMessage += `<br/><span class="text-xs text-red-500">System Log: ${error.message}</span>`;
+                }
+
+                appendMessage(errorMessage, 'model', true);
+                
+                // Remove the last user message from history so they can retry seamlessly
+                chatHistory.pop(); 
+            } finally {
+                // Unlock UI
+                isWaitingForResponse = false;
+                chatInput.disabled = false;
+                sendButton.disabled = false;
+                sendButton.classList.remove('opacity-50', 'cursor-not-allowed');
+                chatInput.focus();
+            }
+        }
+
+        async function fetchGeminiResponse(history) {
+            // NOTE: If you are running this outside of this Canvas environment, 
+            // you must place your Google Gemini API key inside the quotes below.
+            const apiKey = ""; 
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: history,
+                systemInstruction: {
+                    parts: [{ text: systemInstruction }]
+                }
+            };
+
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            const result = await response.json();
+            
+            if (!response.ok) {
+                console.error("API Error Payload:", result);
+                throw new Error(result.error?.message || `HTTP error! status: ${response.status}`);
+            }
+            
+            if (result.candidates && result.candidates[0] && result.candidates[0].content && result.candidates[0].content.parts) {
+                return result.candidates[0].content.parts[0].text;
+            } else {
+                console.error("Unexpected API Response Structure:", result);
+                throw new Error("Invalid API response structure received from the server.");
+            }
+        }
+
+        function appendMessage(text, sender, isError = false) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `flex items-start max-w-[80%] ${sender === 'user' ? 'ml-auto flex-row-reverse' : ''}`;
+            
+            // Format text (simple markdown bold processing for UI)
+            const formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br/>');
+
+            if (sender === 'user') {
+                msgDiv.innerHTML = `
+                    <div class="bg-green-600 p-3 px-5 rounded-2xl rounded-tr-none shadow-sm text-white">
+                        <p>${formattedText}</p>
+                    </div>
+                `;
+            } else {
+                msgDiv.innerHTML = `
+                    <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center ${sender === 'user' ? 'ml-2' : 'mr-2'} flex-shrink-0 mt-1">
+                        <i class="fa-solid fa-robot text-sm text-green-600"></i>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border ${isError ? 'border-red-300 text-red-600' : 'border-gray-100 text-gray-700'}">
+                        <p>${formattedText}</p>
+                    </div>
+                `;
+            }
+
+            chatWindow.appendChild(msgDiv);
+            scrollToBottom();
+        }
+
+        function appendLoading() {
+            const id = 'loading-' + Date.now();
+            const msgDiv = document.createElement('div');
+            msgDiv.id = id;
+            msgDiv.className = `flex items-start max-w-[80%]`;
+            
+            msgDiv.innerHTML = `
+                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-2 flex-shrink-0 mt-1">
+                    <i class="fa-solid fa-robot text-sm text-green-600"></i>
+                </div>
+                <div class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-gray-100 text-gray-700 flex space-x-1 items-center h-12">
+                    <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                    <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                    <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
+                </div>
+            `;
+
+            chatWindow.appendChild(msgDiv);
+            scrollToBottom();
+            return id;
+        }
+
+        function scrollToBottom() {
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+    </script>
+</body>
+</html>
+
