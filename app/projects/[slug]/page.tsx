@@ -1,9 +1,70 @@
 import type { Metadata } from "next";
+import { ArtifactCarousel } from "../../../components/ArtifactCarousel";
+import { ArtifactFigure } from "../../../components/ArtifactFigure";
 import { SiteFooter } from "../../../components/SiteFooter";
 import { SiteHeader } from "../../../components/SiteHeader";
 import { getProject, getVisibleProjects } from "../../../content/projects";
 
 type PageProps = { params: Promise<{ slug: string }> };
+
+const selfAssetBase = "/images/projects/understanding-the-self";
+
+const selfKeyExperiences = [
+  {
+    skill: "Course architecture",
+    imageSrc: `${selfAssetBase}/course-architecture.png`,
+    alt: "OpenLearning course structure showing the Understanding the Self modules and lesson cards",
+    title: "A visible path through 14 lessons",
+    purpose: "The module view gives learners a clear sense of sequence, progress, and what comes next across the asynchronous course.",
+    decision: "Translate the prescribed module structure into a clear, navigable course path.",
+    why: "Learners needed to understand their progression without continuous lecturer guidance.",
+  },
+  {
+    skill: "Concept learning · Supplementary media",
+    imageSrc: `${selfAssetBase}/supplementary-media.png`,
+    alt: "OpenLearning lesson page with optional Plato and Aristotle video resources",
+    title: "Supplementary learning sequence",
+    purpose: "Optional Plato and Aristotle resources provide another entry point into complex philosophical ideas after the required lesson content.",
+    decision: "Keep enrichment optional and clearly separated from the required learning path.",
+    why: "Learners could explore difficult concepts more deeply without losing sight of what they needed to complete.",
+  },
+  {
+    skill: "Formative assessment",
+    imageSrc: `${selfAssetBase}/knowledge-check.png`,
+    alt: "Scenario-based multiple-choice knowledge check about philosophical perspectives of the self",
+    title: "Practice close to the concept",
+    purpose: "Scenario-based questions ask learners to recognize and apply philosophical ideas immediately after studying them.",
+    decision: "Use interaction selectively to reinforce understanding rather than decorate the page.",
+    why: "Immediate practice helps learners check whether they can distinguish related concepts before moving forward.",
+  },
+  {
+    skill: "Reflection · Personal application",
+    imageSrc: `${selfAssetBase}/reflection-activity.png`,
+    alt: "Reflection activity asking learners to connect philosophical ideas to a personal choice or goal",
+    title: "Connect theory to lived experience",
+    purpose: "The reflection prompt asks learners to use Socrates, Plato, or Aristotle to examine a choice, habit, or personal goal.",
+    decision: "Connect abstract concepts to the learner’s own experience.",
+    why: "Personal application helps keep philosophical content from remaining purely theoretical.",
+  },
+  {
+    skill: "Applied assessment · Submission",
+    imageSrc: `${selfAssetBase}/submission-activity.png`,
+    alt: "Submission activity asking learners to analyze how a media image presents beauty or body ideals",
+    title: "Produce an applied analysis",
+    purpose: "A structured submission asks learners to analyze a real media example and propose a more inclusive alternative message.",
+    decision: "Use a submission task when learners needed to create and explain an applied response.",
+    why: "The deliverable makes learners demonstrate their reasoning rather than only recognize a correct answer.",
+  },
+  {
+    skill: "Visual learning · Interactive practice",
+    imageSrc: `${selfAssetBase}/visual-learning-activity.png`,
+    alt: "Physical development lifespan infographic followed by an interactive matching activity",
+    title: "Explain visually, then practice",
+    purpose: "A lifespan infographic makes developmental stages visible before learners use the model in a matching activity.",
+    decision: "Use visuals where relationships would be harder to understand through additional paragraphs.",
+    why: "The visual reduces content density, while immediate practice checks whether learners can use the relationship it shows.",
+  },
+];
 
 export function generateStaticParams() {
   return getVisibleProjects().map((project) => ({ slug: project.slug }));
@@ -33,6 +94,7 @@ export default async function ProjectPage({ params }: PageProps) {
   }
 
   const projectIndex = getVisibleProjects().findIndex((item) => item.slug === slug) + 1;
+  const hasSelfArtifacts = project.slug === "understanding-the-self";
   const verifiedMetrics = project.metrics.filter((metric) => metric.value !== "—");
   const solutionCards = [
     { label: "Concept learning", detail: project.decisions[0]?.detail ?? project.finalOutput },
@@ -59,11 +121,23 @@ export default async function ProjectPage({ params }: PageProps) {
                 <div><dt>Tools</dt><dd>{project.tools.join(", ")}</dd></div>
               </dl>
             </div>
-            <div className="lxd-hero-artifact" aria-label="Hero artifact area reserved for the next content pass">
-              <span>Hero evidence</span>
-              <strong>{project.title}</strong>
-              <small>Strongest project artifact will be added in the evidence pass.</small>
-            </div>
+            {hasSelfArtifacts ? (
+              <ArtifactFigure
+                previewSrc={`${selfAssetBase}/hero-course-wide.png`}
+                fullSrc={`${selfAssetBase}/course-architecture.png`}
+                alt="OpenLearning course structure showing the Understanding the Self lesson cards"
+                title="The complete learner-facing course"
+                caption="Fourteen asynchronous lessons organized into a coherent OpenLearning experience."
+                classification="Learning experience evidence"
+                className="lxd-hero-figure"
+              />
+            ) : (
+              <div className="lxd-hero-artifact" aria-label="Hero artifact area reserved for the next content pass">
+                <span>Hero evidence</span>
+                <strong>{project.title}</strong>
+                <small>Strongest project artifact will be added in the evidence pass.</small>
+              </div>
+            )}
           </div>
         </section>
 
@@ -73,9 +147,9 @@ export default async function ProjectPage({ params }: PageProps) {
             <ol>
               <li><a href="#challenge">Challenge</a></li>
               <li><a href="#insight">Insight</a></li>
-              <li><a href="#solution">Learning solution</a></li>
-              <li><a href="#experience">Experience</a></li>
-              <li><a href="#decisions">Design decisions</a></li>
+              <li><a href="#solution">{hasSelfArtifacts ? "Key experiences" : "Learning solution"}</a></li>
+              {!hasSelfArtifacts ? <li><a href="#experience">Experience</a></li> : null}
+              {!hasSelfArtifacts ? <li><a href="#decisions">Design decisions</a></li> : null}
               <li><a href="#evidence">Evidence</a></li>
               <li><a href="#reflection">Reflection</a></li>
             </ol>
@@ -89,8 +163,32 @@ export default async function ProjectPage({ params }: PageProps) {
               <div className="lxd-context-card">
                 <div><span>Starting context</span><strong>What the project began with</strong></div>
                 <ul>{project.sourceMaterials.map((item) => <li key={item}>{item}</li>)}</ul>
-                <small>Context evidence will be added during the artifact pass.</small>
+                <small>{hasSelfArtifacts ? "Verified source: official teaching plan and prescribed course outline." : "Context evidence will be added during the artifact pass."}</small>
               </div>
+              {hasSelfArtifacts ? (
+                <div className="transformation-evidence">
+                  <div className="transformation-heading"><span>Source → learner experience</span><p>The evidence shows the prescribed academic structure alongside the learner-facing course it became.</p></div>
+                  <div className="transformation-grid">
+                    <ArtifactFigure
+                      previewSrc={`${selfAssetBase}/challenge-teaching-plan.png`}
+                      fullSrc={`${selfAssetBase}/source-to-course.png`}
+                      alt="Teaching plan content outline listing required Understanding the Self modules and topics"
+                      title="Teaching plan / content outline"
+                      caption="The prescribed module sequence and topics established the project’s academic starting point."
+                      classification="Context evidence"
+                    />
+                    <div className="transformation-arrow" aria-hidden="true">→</div>
+                    <ArtifactFigure
+                      previewSrc={`${selfAssetBase}/hero-course-wide.png`}
+                      fullSrc={`${selfAssetBase}/course-architecture.png`}
+                      alt="Final OpenLearning module showing the organized lesson cards"
+                      title="Learner-facing course architecture"
+                      caption="The source structure was translated into a navigable visual sequence of asynchronous lessons."
+                      classification="Learning experience evidence"
+                    />
+                  </div>
+                </div>
+              ) : null}
             </section>
 
             <section id="insight" className="lxd-section">
@@ -105,19 +203,28 @@ export default async function ProjectPage({ params }: PageProps) {
             </section>
 
             <section id="solution" className="lxd-section">
-              <LxdTitle number="03" kicker="Learning solution" title="How the experience works" />
-              <p className="large-copy">{project.finalOutput}</p>
-              <div className="solution-grid">
-                {solutionCards.map((card, index) => <article key={card.label}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <h3>{card.label}</h3>
-                  <p>{card.detail}</p>
-                  <small>Supporting artifact to be added</small>
-                </article>)}
-              </div>
+              <LxdTitle number="03" kicker={hasSelfArtifacts ? "Key learning experiences" : "Learning solution"} title={hasSelfArtifacts ? "How learners encounter, practise, and apply ideas" : "How the experience works"} />
+              {hasSelfArtifacts ? (
+                <>
+                  <p className="lxd-section-intro key-experience-intro">Each artifact appears once, organized by the instructional capability it demonstrates and the decision that gave it purpose.</p>
+                  <ArtifactCarousel items={selfKeyExperiences} />
+                </>
+              ) : (
+                <>
+                  <p className="large-copy">{project.finalOutput}</p>
+                  <div className="solution-grid">
+                    {solutionCards.map((card, index) => <article key={card.label}>
+                      <span>{String(index + 1).padStart(2, "0")}</span>
+                      <h3>{card.label}</h3>
+                      <p>{card.detail}</p>
+                      <small>Supporting artifact to be added</small>
+                    </article>)}
+                  </div>
+                </>
+              )}
             </section>
 
-            <section id="experience" className="lxd-section lxd-showcase-section">
+            {!hasSelfArtifacts ? <section id="experience" className="lxd-section lxd-showcase-section">
               <LxdTitle number="04" kicker="Experience" title="What it looks like" />
               <p className="lxd-section-intro">This area will become the project’s visual walkthrough. Artifacts are intentionally withheld until each one has a clear instructional purpose.</p>
               <div className="showcase-scaffold">
@@ -125,9 +232,9 @@ export default async function ProjectPage({ params }: PageProps) {
                 <article><span>Design evidence</span><strong>Reasoning</strong><p>Structure, storyboard, interaction plan, or design-development artifact.</p></article>
                 <article><span>Learning experience evidence</span><strong>Learner view</strong><p>Lesson, activity, assessment, workshop, or performance-support experience.</p></article>
               </div>
-            </section>
+            </section> : null}
 
-            <section id="decisions" className="lxd-section">
+            {!hasSelfArtifacts ? <section id="decisions" className="lxd-section">
               <LxdTitle number="05" kicker="Design decisions" title="Choices that shaped the experience" />
               <div className="lxd-decision-grid">
                 {project.decisions.slice(0, 4).map((decision, index) => <article key={decision.title}>
@@ -136,10 +243,10 @@ export default async function ProjectPage({ params }: PageProps) {
                   <dl><dt>Why</dt><dd>{decision.detail}</dd><dt>Evidence</dt><dd>Artifact to be linked in the evidence pass.</dd></dl>
                 </article>)}
               </div>
-            </section>
+            </section> : null}
 
             <section id="evidence" className="lxd-section">
-              <LxdTitle number="06" kicker="Evidence" title="Outcomes / impact" />
+              <LxdTitle number={hasSelfArtifacts ? "04" : "06"} kicker="Evidence" title="Outcomes / impact" />
               {verifiedMetrics.length ? (
                 <div className="metric-grid">{verifiedMetrics.map((metric) => <article key={`${metric.label}-${metric.note}`}><strong>{metric.value}</strong><span>{metric.label}</span><small>{metric.note}</small></article>)}</div>
               ) : (
@@ -149,7 +256,7 @@ export default async function ProjectPage({ params }: PageProps) {
             </section>
 
             <section id="reflection" className="lxd-section">
-              <LxdTitle number="07" kicker="Reflection" title="What the work strengthened" />
+              <LxdTitle number={hasSelfArtifacts ? "05" : "07"} kicker="Reflection" title="What the work strengthened" />
               <blockquote>{project.reflection}</blockquote>
               {project.reflectionDetails?.[1] ? <p className="reflection-next">{project.reflectionDetails[1]}</p> : null}
             </section>
