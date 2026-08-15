@@ -14,7 +14,7 @@ export type KeyExperienceSlide = {
 
 export function ArtifactCarousel({ items }: { items: KeyExperienceSlide[] }) {
   const carouselRef = useRef<HTMLUListElement>(null);
-  const settleTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const settleTimerRef = useRef<number | null>(null);
   const transitionLockRef = useRef(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
