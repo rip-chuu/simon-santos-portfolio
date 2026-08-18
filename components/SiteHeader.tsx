@@ -5,12 +5,14 @@ import { useEffect, useState } from "react";
 const tabs = [
   { id: "home", label: "Home", href: "/" },
   { id: "projects", label: "Projects", href: "/projects" },
+  { id: "storyboards", label: "Storyboards", href: "/storyboards" },
   { id: "about", label: "About", href: "/#about" },
 ] as const;
 
 type TabId = (typeof tabs)[number]["id"];
 
 function tabFromLocation(): TabId {
+  if (window.location.pathname.startsWith("/storyboards")) return "storyboards";
   if (window.location.pathname.startsWith("/projects")) return "projects";
   if (window.location.hash === "#about") return "about";
   return "home";

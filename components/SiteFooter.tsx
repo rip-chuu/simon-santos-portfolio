@@ -1,6 +1,6 @@
 export function SiteFooter() {
   return (
-    <footer className="site-footer">
+    <footer className="site-footer" id="contact">
       <div className="shell footer-grid">
         <div>
           <p className="eyebrow light">Let&apos;s make learning work.</p>
@@ -8,6 +8,7 @@ export function SiteFooter() {
         </div>
         <div className="footer-links">
           <a href="/projects">Explore projects <span aria-hidden="true">↗</span></a>
+          <a href="/storyboards">Explore storyboards <span aria-hidden="true">↗</span></a>
           <a href="/#about">More about Simon <span aria-hidden="true">↗</span></a>
         </div>
       </div>

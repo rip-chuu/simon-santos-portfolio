@@ -117,6 +117,11 @@ export default function Home() {
               <div className="project-grid">{organizationalProjects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index + higherEducationProjects.length} />)}</div>
             </div>
             <div className="section-action"><a className="text-link" href="/projects">View all learning solutions <span aria-hidden="true">→</span></a></div>
+            <aside className="storyboard-home-feature" aria-label="Articulate Storyboards capability">
+              <span>Capability extension</span>
+              <div><h3>Articulate Storyboards</h3><p>Scenario-based eLearning concepts, branching interactions, and developer-ready learning design documentation.</p></div>
+              <a href="/storyboards">Explore storyboards <span aria-hidden="true">→</span></a>
+            </aside>
           </div>
         </section>
 
