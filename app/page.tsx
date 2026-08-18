@@ -78,6 +78,7 @@ export default function Home() {
             <p className="hero-disciplines">Psychology <span>×</span> Instructional Design <span>×</span> Creative Technology</p>
             <div className="button-row">
               <a className="button button-primary hero-primary-cta" href="#projects">View Projects <span aria-hidden="true">→</span></a>
+              <a className="button button-secondary" href="/storyboards">View Storyboards <span aria-hidden="true">→</span></a>
               <a className="button button-secondary" href="#about">About Simon <span aria-hidden="true">→</span></a>
             </div>
           </div>
