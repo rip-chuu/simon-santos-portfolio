@@ -157,7 +157,7 @@ export function ProposalCoachExperienceGallery() {
             aria-labelledby="experience-modal-title"
           >
             <button type="button" className="experience-modal-close" onClick={closeExperience} aria-label="Close evidence view">×</button>
-            <div className="experience-modal-artifact">
+            <div className={`experience-modal-artifact${selected.number === "02" ? " experience-modal-artifact-module" : ""}`}>
               <Image src={selected.src} alt={selected.alt} width={2995} height={2071} sizes="(max-width: 920px) 100vw, 60vw" priority />
             </div>
             <div className="experience-modal-content">
