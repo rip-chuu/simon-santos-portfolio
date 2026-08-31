@@ -11,7 +11,9 @@ type ArtifactFigureProps = {
     | "Design evidence"
     | "Learning experience evidence"
     | "Learning Experience Design"
-    | "Performance Support / Guided Practice";
+    | "Performance Support / Guided Practice"
+    | "Visual instructional design · Progressive disclosure"
+    | "Assessment design · Immediate feedback";
   imageRatio?: string;
   className?: string;
 };
