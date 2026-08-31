@@ -15,7 +15,7 @@ export type Project = {
   primaryRole?: string;
   status?: string;
   cardSubtitle?: string;
-  domain?: "Higher Education" | "Organizational Learning & Performance";
+  domain?: "Higher Education" | "Organizational Learning & Performance" | "Digital Learning Prototypes";
   capability?: string;
   context?: string;
   targetUsers?: string;
@@ -525,6 +525,94 @@ export const projects: Project[] = [
     ],
     tools: ["HTML", "CSS", "JavaScript", "Instructional Content Design"],
     accent: "forest",
+  },
+  {
+    slug: "picking-the-knife-for-the-job",
+    order: 5,
+    visible: true,
+    featured: true,
+    title: "Picking the Knife for the Job",
+    type: "Microlearning",
+    platform: "Articulate Rise 360",
+    primaryRole: "Instructional Designer / Rise Developer",
+    status: "Self-directed portfolio prototype",
+    cardSubtitle: "Microlearning | Articulate Rise 360",
+    domain: "Digital Learning Prototypes",
+    capability: "Microlearning Design",
+    context: "Home Cooking / Self-Directed Learning",
+    targetUsers: "Beginner or inexperienced home cooks choosing a knife for common food-preparation tasks.",
+    heroImage: "/images/projects/picking-the-knife-for-the-job/knife-identification.jpg",
+    summary:
+      "A short scenario-based microlearning experience designed to help beginner home cooks select the appropriate kitchen knife for common food-preparation tasks.",
+    focus: [
+      "Microlearning design",
+      "Rise 360 development",
+      "Objective–assessment alignment",
+      "Immediate feedback",
+    ],
+    challenge:
+      "Beginners may recognize that kitchen knives look different but still struggle to decide which tool fits the food and cutting task in front of them.",
+    role:
+      "I designed and developed the self-directed prototype in Articulate Rise 360, including the content sequence, visual identification activity, decision rules, applied matching task, and learner feedback.",
+    sourceMaterials: [
+      "Final Articulate Rise 360 export",
+      "Course images and audio",
+      "Embedded audio transcripts",
+      "Learner-facing interaction and feedback copy",
+    ],
+    process: [
+      "Defined the performance problem and novice audience",
+      "Wrote a behavioral knife-selection objective",
+      "Limited the scope to four versatile kitchen knives",
+      "Sequenced identification, decision rules, and realistic examples",
+      "Designed an applied matching knowledge check",
+      "Added immediate explanatory feedback and reviewed the exported course",
+    ],
+    decisions: [
+      {
+        title: "Keep the experience deliberately short",
+        detail:
+          "A focused microlearning format supports a narrow, immediate decision without surrounding it with knife history, maintenance, or advanced technique that the objective does not require.",
+      },
+      {
+        title: "Teach through tasks, not definitions",
+        detail:
+          "Learners encounter knives through the foods and cuts they need to handle, keeping instruction close to the intended performance rather than emphasizing terminology alone.",
+      },
+      {
+        title: "Reveal complexity progressively",
+        detail:
+          "Chef’s, serrated, utility, and paring knives are introduced before concise rules of thumb and an applied multi-task decision, reducing the amount novices must process at once.",
+      },
+      {
+        title: "Correct decisions immediately",
+        detail:
+          "The knowledge check provides explanatory feedback while the learner’s choice is still active, reinforcing the relationship between food characteristics, cutting task, and knife selection.",
+      },
+    ],
+    finalOutput:
+      "A responsive Articulate Rise 360 microlearning prototype with labeled visual exploration, audio-supported explanations, decision rules, and an applied matching knowledge check.",
+    finalOutputs: [
+      "Responsive Rise 360 course",
+      "Four-knife visual identification interaction",
+      "Applied matching knowledge check",
+      "Audio transcripts and explanatory feedback",
+    ],
+    metrics: [
+      { value: "4", label: "Knife types", note: "One focused decision framework" },
+      { value: "1", label: "Applied knowledge check", note: "Aligned practice, not validated transfer" },
+    ],
+    impactNote:
+      "This is a self-directed portfolio prototype. Learner testing and real-world performance transfer were not measured, so no validated outcome claim is made.",
+    reflection:
+      "The final artifact demonstrates how a narrow performance decision can be taught through a concise sequence of identification, decision rules, realistic examples, and immediate practice.",
+    reflectionDetails: [
+      "The exported package does not include version history or a separate storyboard, so specific development revisions cannot be verified responsibly.",
+      "A future iteration would add learner testing, item-level feedback, a formal alternative-text audit, and more varied preparation tasks before expanding the scope.",
+    ],
+    tools: ["Articulate Rise 360", "Visual content design", "Audio narration"],
+    externalUrl: "/courses/picking-the-knife-for-the-job/index.html",
+    accent: "yellow",
   },
 ];
 

@@ -57,6 +57,7 @@ export default function Home() {
   const projects = getFeaturedProjects();
   const higherEducationProjects = projects.filter((project) => project.domain === "Higher Education");
   const organizationalProjects = projects.filter((project) => project.domain === "Organizational Learning & Performance");
+  const prototypeProjects = projects.filter((project) => project.domain === "Digital Learning Prototypes");
 
   return (
     <>
@@ -116,6 +117,10 @@ export default function Home() {
             <div className="project-domain-group">
               <header><span>Domain B</span><h3>Organizational Learning &amp; Performance</h3><p>Workshop pathways and digital resources that help people act inside authentic systems.</p></header>
               <div className="project-grid">{organizationalProjects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index + higherEducationProjects.length} />)}</div>
+            </div>
+            <div className="project-domain-group">
+              <header><span>Domain C</span><h3>Digital Learning Prototypes</h3><p>Focused interactive learning built to make a specific decision easier to understand and practise.</p></header>
+              <div className="project-grid">{prototypeProjects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index + higherEducationProjects.length + organizationalProjects.length} />)}</div>
             </div>
             <div className="section-action"><a className="text-link" href="/projects">View all learning solutions <span aria-hidden="true">→</span></a></div>
             <aside className="storyboard-home-feature" aria-label="Articulate Storyboards capability">

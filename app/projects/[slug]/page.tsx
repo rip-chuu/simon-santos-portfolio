@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ArtifactCarousel } from "../../../components/ArtifactCarousel";
 import { ArtifactFigure } from "../../../components/ArtifactFigure";
+import { KnifeMicrolearningCaseStudy } from "../../../components/KnifeMicrolearningCaseStudy";
 import { ProposalCoachExperienceGallery } from "../../../components/ProposalCoachExperienceGallery";
 import { SiteFooter } from "../../../components/SiteFooter";
 import { SiteHeader } from "../../../components/SiteHeader";
@@ -133,6 +134,7 @@ export default async function ProjectPage({ params }: PageProps) {
   if (!project) return <><SiteHeader /><main className="shell not-found"><p className="eyebrow">Project not found</p><h1>This project has moved.</h1><a className="button button-primary" href="/projects">Back to projects</a></main><SiteFooter /></>;
 
   const projectIndex = getVisibleProjects().findIndex((item) => item.slug === slug) + 1;
+  if (slug === "picking-the-knife-for-the-job") return <KnifeMicrolearningCaseStudy project={project} projectIndex={projectIndex} />;
   const insight = projectInsights[slug];
   const pillars = solutionPillars[slug];
   const keyOutputs = project.finalOutputs?.slice(0, 4) ?? [project.finalOutput];

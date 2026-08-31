@@ -13,6 +13,7 @@ export default function ProjectsPage() {
   const projects = getVisibleProjects();
   const higherEducationProjects = projects.filter((project) => project.domain === "Higher Education");
   const organizationalProjects = projects.filter((project) => project.domain === "Organizational Learning & Performance");
+  const prototypeProjects = projects.filter((project) => project.domain === "Digital Learning Prototypes");
 
   return (
     <>
@@ -35,6 +36,10 @@ export default function ProjectsPage() {
           <div className="project-domain-group">
             <header><span>Domain B</span><h2>Organizational Learning &amp; Performance</h2><p>Learning pathways and performance support embedded in authentic organizational work.</p></header>
             <div className="project-grid">{organizationalProjects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index + higherEducationProjects.length} />)}</div>
+          </div>
+          <div className="project-domain-group">
+            <header><span>Domain C</span><h2>Digital Learning Prototypes</h2><p>Focused interactive learning built around clear objectives, realistic decisions, and immediate feedback.</p></header>
+            <div className="project-grid">{prototypeProjects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index + higherEducationProjects.length + organizationalProjects.length} />)}</div>
           </div>
         </section>
       </main>
